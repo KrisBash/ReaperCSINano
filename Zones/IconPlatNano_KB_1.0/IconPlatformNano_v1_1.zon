@@ -28,19 +28,19 @@ ZoneEnd
 
 Zone "Channel"
 	SelectedTrackNavigator
-	Fader|								TrackVolume
-	Rotary|								MCUTrackPan
+	Fader|							TrackVolume
+	Rotary|							MCUTrackPan
 
 / ROTARY Controls
 
-	Rotary1								FocusedFXParam //MCUTrackPan	// Will trigger pan width mode on push. use TrackPan instead, if you'd like to use custom push actions below
-	Rotary2								FocusedFXParam
-	Rotary3								NoAction
-	Rotary4								MCUTrackPan
-	Rotary5								NoAction
-	Rotary6								NoAction
-	Rotary7								NoAction
-	Rotary8								NoAction
+	Rotary1							FocusedFXParam 
+	Rotary2							FocusedFXParam
+	Rotary3							NoAction
+	Rotary4							NoAction
+	Rotary5							NoAction
+	Rotary6							NoAction
+	Rotary7							NoAction
+	Rotary8							NoAction
 
 	RotaryPush1						NoAction
 	RotaryPush2						NoAction
@@ -53,23 +53,20 @@ Zone "Channel"
 
 / DISPLAYS
 
-	VUMeter|							TrackOutputMeter // or TrackOutputMeterMaxPeakLR
-
+	VUMeter|						TrackOutputMeter // or TrackOutputMeterMaxPeakLR
 	TimeDisplay						TimeDisplay
-
 	DisplayUpper|		 			TrackNameDisplay
 	DisplayLower|	 				TrackVolumeDisplay
 
 / TRACK Controls
-
-	Mute|									TrackMute
-	Alt+Mute|							NoAction
+	Mute|							TrackMute
+	Alt+Mute|						NoAction
 	Shift+Mute|						NoAction
 	Control+Mute|					NoAction
 
-	Solo|									TrackSolo
-	Alt+Solo|							ClearAllSolo
-	Hold+Solo|						Reaper "_RS455298e0741a8468094a2d845d1b17bd9a5f36a1" //script solo exclusive
+	Solo|							TrackSolo
+	Hold+Solo|						ClearAllSolo
+	Shift+Solo|						Reaper "_RS455298e0741a8468094a2d845d1b17bd9a5f36a1" //script solo exclusive
 	Control+Solo|					NoAction
 
 	RecordArm| 						TrackRecordArm
@@ -80,13 +77,10 @@ Zone "Channel"
 ZoneEnd
 
 
-
 Zone "MasterChannel"
 	/	Master track (accessed by pressing the Master button on Icon Nano)
 	/	Note that the VUMeter and displays for the master channel are currently unsupported in CSI v1.0
-
 	MasterTrackNavigator
-
 	MasterFader						TrackVolume
 	DisplayUpperMaster		TrackNameDisplay
 	DisplayLowerMaster		TrackVolumeDisplay
@@ -136,8 +130,7 @@ Zone "Buttons"
 / I use the bottom 3 buttons on the right as Alt, Shift and Control modifiers
 /	but you can assign these modifiers to any other button you want
 
-	RightCol1							Reaper "41823" //add to render with last settings
-	Hold+RightCol1						Reaper "40015" //open render dialog
+	RightCol1							Shift
 	RightCol2							NoAction
 	RightCol3							NoAction
 
@@ -171,18 +164,19 @@ Zone "Buttons"
 
 	Red3							NoAction
 	
-	Red4							Shift
-	
+	Red4							Reaper "41823" //add to render with last settings
+	Shift+Red4						Reaper "40015" //open render dialog
+
 	Red5							Reaper "40026" // Save
-	Hold+Red5						Reaper "40022" // save as
+	Shift+Red5						Reaper "40022" // save as
 
 	Red6							Reaper "40029"  //undo
-	Hold+Red6						Reaper "40072" //undo history
+	Shift+Red6						Reaper "40072" //undo history
 
 
 	Red7							Reaper "41984"    //arm envelope param
 
-	Red8									NoAction
+	Red8							NoACtion
 
 
 / GREEN BUTTONS
