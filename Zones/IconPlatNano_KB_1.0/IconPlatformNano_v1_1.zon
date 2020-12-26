@@ -1,0 +1,427 @@
+/ EDIT this file to your liking
+/	Refer to action reference to assign actions to controls:
+/	https://github.com/GeoffAWaddington/reaper_csurf_integrator/wiki/Action-Reference
+
+/ ------------------------------------------------------------------------------
+/ Zone/Action definitions for Icon Platform Nano
+/ ------------------------------------------------------------------------------
+/ Single channel setup
+/ Version: 1.1
+/ by: Mistik (kreativist.si@gmail.com)
+/ ------------------------------------------------------------------------------
+/ Update history
+/
+/ v1.1 - 2020-12-06
+/ - tested and working with CSI 1.0 v 2020-12-04
+
+Zone "Home"
+	OnTrackSelection MapSelectedTrackSendsToWidgets
+	OnFXFocus MapFocusedFXToWidgets
+	IncludedZones
+		"Channel"
+		"MasterChannel"
+		"Buttons"
+		"Transport"
+		"JogWheel"
+	IncludedZonesEnd
+ZoneEnd
+
+Zone "Channel"
+	SelectedTrackNavigator
+	Fader|								TrackVolume
+	Rotary|								MCUTrackPan
+
+/ ROTARY Controls
+
+	Rotary1								FocusedFXParam //MCUTrackPan	// Will trigger pan width mode on push. use TrackPan instead, if you'd like to use custom push actions below
+	Rotary2								FocusedFXParam
+	Rotary3								NoAction
+	Rotary4								MCUTrackPan
+	Rotary5								NoAction
+	Rotary6								NoAction
+	Rotary7								NoAction
+	Rotary8								NoAction
+
+	RotaryPush1						NoAction
+	RotaryPush2						NoAction
+	RotaryPush3						NoAction
+	RotaryPush4						NoAction
+	RotaryPush5						NoAction
+	RotaryPush6						NoAction
+	RotaryPush7						NoAction
+	RotaryPush8						NoAction
+
+/ DISPLAYS
+
+	VUMeter|							TrackOutputMeter // or TrackOutputMeterMaxPeakLR
+
+	TimeDisplay						TimeDisplay
+
+	DisplayUpper|		 			TrackNameDisplay
+	DisplayLower|	 				TrackVolumeDisplay
+
+/ TRACK Controls
+
+	Mute|									TrackMute
+	Alt+Mute|							NoAction
+	Shift+Mute|						NoAction
+	Control+Mute|					NoAction
+
+	Solo|									TrackSolo
+	Alt+Solo|							ClearAllSolo
+	Hold+Solo|						Reaper "_RS455298e0741a8468094a2d845d1b17bd9a5f36a1" //script solo exclusive
+	Control+Solo|					NoAction
+
+	RecordArm| 						TrackRecordArm
+	Alt+RecordArm|				CycleTrackAutoMode
+	Shift+RecordArm|			NoAction
+	Control+RecordArm|		NoAction
+
+ZoneEnd
+
+
+
+Zone "MasterChannel"
+	/	Master track (accessed by pressing the Master button on Icon Nano)
+	/	Note that the VUMeter and displays for the master channel are currently unsupported in CSI v1.0
+
+	MasterTrackNavigator
+
+	MasterFader						TrackVolume
+	DisplayUpperMaster		TrackNameDisplay
+	DisplayLowerMaster		TrackVolumeDisplay
+	VUMeterMaster					TrackOutputMeter
+
+ZoneEnd
+
+Zone "Transport"
+/ TRANSPORT buttons
+
+	Play 									Play
+	Alt+Play							NoAction
+	Shift+Play						NoAction
+	Control+Play					NoAction
+
+	Stop 									Stop
+	Alt+Stop							NoAction
+	Shift+Stop						NoAction
+	Control+Stop					NoAction
+
+	Record 								Record
+	Alt+Record						NoAction
+	Shift+Record					NoAction
+	Control+Record				NoAction
+
+	Rewind								Rewind
+	Alt+Rewind						NoAction
+	Shift+Rewind					NoAction
+	Control+Rewind				NoAction
+
+	FastForward						FastForward
+	Alt+FastForward				NoAction
+	Shift+FastForward			NoAction
+	Control+FastForward		NoAction
+
+	Loop							Reaper "1068" //toggle repeat
+	Alt+Loop							NoAction
+	Shift+Loop						NoAction
+	Control+Loop					NoAction
+
+ZoneEnd
+
+Zone "Buttons"
+
+/	RIGHT COLUMN buttons (6 buttons on the right)
+
+/ I use the bottom 3 buttons on the right as Alt, Shift and Control modifiers
+/	but you can assign these modifiers to any other button you want
+
+	RightCol1							Reaper "41823" //add to render with last settings
+	Hold+RightCol1						Reaper "40015" //open render dialog
+	RightCol2							NoAction
+	RightCol3							NoAction
+
+	RightCol4							Reaper _S&M_SHOWFXCHAINSEL //show FX chain
+	RightCol5							Reaper "41589" // ITEM PROPERTIES
+	RightCol6							Reaper "40929" //open render queue
+
+/	LEFT COLUMN buttons	(6 buttons on the left)
+
+/ Channel 5-8 button is hardwired to simulate 8 channels and we can't redefine it's behaviour.
+/ It is used to turn rotaries1-4 into rotaries5-8 so you can control up to 8 parameters with the rotary encoders
+
+/	The buttons |< and >| are hardwired to select tracks in an 8 channel setup.
+/ I don't use these buttons in my single channel setup, but
+/ Select1 - Select8 buttons can be assigned to any action if needed
+
+/ The <<8 and 8>> buttons, defined as BankLeft and BankRight are used to change track banks (jump by 8 tracks)
+/ They are assignable to actions, but n	ote that they are hardwired to also trigger the select message for the first track (Select1)
+	BankLeft		Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
+	BankRight 		Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
+
+/ The lock button is hardwired and cannot be assigned
+/	when engaged, the fader will follow automation, but won't send changes to tracks (very useful)
+
+/ RED Buttons
+
+	Red1							Reaper "40042" // GO TO START
+	
+
+	Red2							Reaper "40319" //Jump to next item
+
+	Red3							NoAction
+	
+	Red4							Shift
+	
+	Red5							Reaper "40026" // Save
+	Hold+Red5						Reaper "40022" // save as
+
+	Red6							Reaper "40029"  //undo
+	Hold+Red6						Reaper "40072" //undo history
+
+
+	Red7							Reaper "41984"    //arm envelope param
+
+	Red8									NoAction
+
+
+/ GREEN BUTTONS
+
+	Green1								NoAction
+	Alt+Green1						NoAction
+	Shift+Green1					NoAction
+	Control+Green1				NoAction
+
+	Green2								NoAction
+	Alt+Green2						NoAction
+	Shift+Green2					NoAction
+	Control+Green2				NoAction
+
+	Green3								NoAction
+	Alt+Green3						NoAction
+	Shift+Green3					NoAction
+	Control+Green3				NoAction
+
+	Green4						GoZone Home
+	Alt+Green4						NoAction
+	Shift+Green4					NoAction
+	Control+Green4				NoAction
+
+	Green5								NoAction
+	Alt+Green5						NoAction
+	Shift+Green5					NoAction
+	Control+Green5				NoAction
+
+	Green6								NoAction
+	Alt+Green6						NoAction
+	Shift+Green6					NoAction
+	Control+Green6				NoAction
+
+	Green7								NoAction
+	Alt+Green7						NoAction
+	Shift+Green7					NoAction
+	Control+Green7				NoAction
+
+	Green8								NoAction
+	Alt+Green8						NoAction
+	Shift+Green8					NoAction
+	Control+Green8				NoAction
+
+/ BLUE Buttons
+
+	Blue1									NoAction
+	Alt+Blue1							NoAction
+	Shift+Blue1						NoAction
+	Control+Blue1					NoAction
+
+	Blue2									NoAction
+	Alt+Blue2							NoAction
+	Shift+Blue2						NoAction
+	Control+Blue2					NoAction
+
+	Blue3									NoAction
+	Alt+Blue3							NoAction
+	Shift+Blue3						NoAction
+	Control+Blue3					NoAction
+
+	Blue4							GoZone Home
+	Alt+Blue4							NoAction
+	Shift+Blue4						NoAction
+	Control+Blue4					NoAction
+
+	Blue5									NoAction
+	Alt+Blue5							NoAction
+	Shift+Blue5						NoAction
+	Control+Blue5					NoAction
+
+	Blue6									NoAction
+	Alt+Blue6							NoAction
+	Shift+Blue6						NoAction
+	Control+Blue6					NoAction
+
+	Blue7									NoAction
+	Alt+Blue7							NoAction
+	Shift+Blue7						NoAction
+	Control+Blue7					NoAction
+
+	Blue8									NoAction
+	Alt+Blue8							NoAction
+	Shift+Blue8						NoAction
+	Control+Blue8					NoAction
+
+/ PURPLE Buttons
+
+	Purple1								NoAction
+	Alt+Purple1						NoAction
+	Shift+Purple1					NoAction
+	Control+Purple1				NoAction
+
+	Purple2								NoAction
+	Alt+Purple2						NoAction
+	Shift+Purple2					NoAction
+	Control+Purple2				NoAction
+
+	Purple3								NoAction
+	Alt+Purple3						NoAction
+	Shift+Purple3					NoAction
+	Control+Purple3				NoAction
+
+	Purple4						GoZone Home
+	Alt+Purple4						NoAction
+	Shift+Purple4					NoAction
+	Control+Purple4				NoAction
+
+	Purple5								NoAction
+	Alt+Purple5						NoAction
+	Control+Purple5				NoAction
+	Shift+Control+Purple5	NoAction
+
+	Purple6								NoAction
+	Alt+Purple6						NoAction
+	Control+Purple6				NoAction
+	Shift+Control+Purple6	NoAction
+
+	Purple7								NoAction
+	Alt+Purple7						NoAction
+	Control+Purple7				NoAction
+	Shift+Control+Purple7	NoAction
+
+	Purple8								NoAction
+	Alt+Purple8						NoAction
+	Control+Purple8				NoAction
+	Shift+Control+Purple8	NoAction
+
+/ YELLOW Buttons
+
+	Yellow1								NoAction
+	Alt+Yellow1						NoAction
+	Shift+Yellow1					NoAction
+	Control+Yellow1				NoAction
+
+	Yellow2								NoAction
+	Alt+Yellow2						NoAction
+	Shift+Yellow2					NoAction
+	Control+Yellow2				NoAction
+
+	Yellow3								NoAction
+	Alt+Yellow3						NoAction
+	Shift+Yellow3					NoAction
+	Control+Yellow3				NoAction
+
+	Yellow4						GoZone Home
+	Alt+Yellow4						NoAction
+	Shift+Yellow4					NoAction
+	Control+Yellow4				NoAction
+
+	Yellow5								NoAction
+	Alt+Yellow5						NoAction
+	Shift+Yellow5					NoAction
+	Control+Yellow5				NoAction
+
+	Yellow6								NoAction
+	Alt+Yellow6						NoAction
+	Shift+Yellow6					NoAction
+	Control+Yellow6				NoAction
+
+	Yellow7								NoAction
+	Alt+Yellow7						NoAction
+	Shift+Yellow7					NoAction
+	Control+Yellow7				NoAction
+
+	Yellow8								NoAction
+	Alt+Yellow8						NoAction
+	Shift+Yellow8					NoAction
+	Control+Yellow8				NoAction
+
+ZoneEnd
+
+Zone "JogWheel"
+
+	JogWheelPush				NoAction
+	Alt+JogWheelPush			NoAction
+	Shift+JogWheelPush		NoAction
+	Control+JogWheelPush	NoAction
+
+/ JogWheel clockwise
+/ replace action with anything you like, for example Reaper 40647 to move right by grid division
+
+	JogWheelCW 						Reaper 41667	// move right 8 pixels
+	JogWheelCW2 					Reaper 41667
+	JogWheelCW3 					Reaper 41667
+	JogWheelCW4 					Reaper 41667
+	JogWheelCW5 					Reaper 41667
+	JogWheelCW6 					Reaper 41667
+	JogWheelCW7 					Reaper 41667
+
+/ JogWheel counter-clockwise
+/ replace action with anything you like, for example Reaper	40646 to move left by grid division
+
+	JogWheelCCW 					Reaper	41666	// move left 8 pixels
+	JogWheelCCW2			 		Reaper	41666
+	JogWheelCCW3		 			Reaper	41666
+	JogWheelCCW4		 			Reaper	41666
+	JogWheelCCW5		 			Reaper	41666
+	JogWheelCCW6		 			Reaper	41666
+	JogWheelCCW7		 			Reaper	41666
+
+/ Alt+JogWheel
+	Alt+JogWheelCW 				NoAction
+	Alt+JogWheelCW2 			NoAction
+	Alt+JogWheelCW3 			NoAction
+	Alt+JogWheelCW4 			NoAction
+	Alt+JogWheelCW5 			NoAction
+	Alt+JogWheelCW6 			NoAction
+	Alt+JogWheelCW7 			NoAction
+
+	Alt+JogWheelCCW 			NoAction
+	Alt+JogWheelCCW2		 	NoAction
+	Alt+JogWheelCCW3		 	NoAction
+	Alt+JogWheelCCW4		 	NoAction
+	Alt+JogWheelCCW5		 	NoAction
+	Alt+JogWheelCCW6		 	NoAction
+	Alt+JogWheelCCW7		 	NoAction
+
+
+/ Control+JogWheel
+	Control+JogWheelCW 			NoAction
+	Control+JogWheelCW2 		NoAction
+	Control+JogWheelCW3 		NoAction
+	Control+JogWheelCW4 		NoAction
+	Control+JogWheelCW5 		NoAction
+	Control+JogWheelCW6 		NoAction
+	Control+JogWheelCW7 		NoAction
+
+	Control+JogWheelCCW 		NoAction
+	Control+JogWheelCCW2	 	NoAction
+	Control+JogWheelCCW3	 	NoAction
+	Control+JogWheelCCW4	 	NoAction
+	Control+JogWheelCCW5	 	NoAction
+	Control+JogWheelCCW6	 	NoAction
+	Control+JogWheelCCW7	 	NoAction
+
+	/Zoom
+		Zoom+Up 					Reaper "40111"
+		Zoom+Down 				Reaper "40112"
+		Zoom+Right 				Reaper "1012"
+		Zoom+Left 				Reaper "1011"
+ZoneEnd
