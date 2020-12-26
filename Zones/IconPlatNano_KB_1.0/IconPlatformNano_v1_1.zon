@@ -6,13 +6,13 @@
 / Zone/Action definitions for Icon Platform Nano
 / ------------------------------------------------------------------------------
 / Single channel setup
-/ Version: 1.1
-/ by: Mistik (kreativist.si@gmail.com)
+/ Version: 1.0
+/ by: krbash
 / ------------------------------------------------------------------------------
 / Update history
 /
-/ v1.1 - 2020-12-06
-/ - tested and working with CSI 1.0 v 2020-12-04
+/ v1.0- 2020-12-06
+/ - Initial version, forked from Mistik 1.1
 
 Zone "Home"
 	OnTrackSelection MapSelectedTrackSendsToWidgets
@@ -33,10 +33,10 @@ Zone "Channel"
 
 / ROTARY Controls
 
-	Rotary1							FocusedFXParam 
+	Rotary1							FocusedFXParam
 	Rotary2							FocusedFXParam
 	Rotary3							NoAction
-	Rotary4							NoAction
+	Rotary4							TrackVolume
 	Rotary5							NoAction
 	Rotary6							NoAction
 	Rotary7							NoAction
@@ -55,8 +55,12 @@ Zone "Channel"
 
 	VUMeter|						TrackOutputMeter // or TrackOutputMeterMaxPeakLR
 	TimeDisplay						TimeDisplay
-	DisplayUpper|		 			TrackNameDisplay
-	DisplayLower|	 				TrackVolumeDisplay
+	//DisplayUpper|		 			TrackNameDisplay
+	//DisplayLower|	 				TrackVolumeDisplay
+	//SelectedTrackNavigator
+	DisplayUpper| MCUTrackPanDisplay Rotary
+	DisplayLower| TrackNameDisplay 
+	//TrackTouch+DisplayUpper| TrackVolumeDisplay
 
 / TRACK Controls
 	Mute|							TrackMute
@@ -90,36 +94,12 @@ ZoneEnd
 
 Zone "Transport"
 / TRANSPORT buttons
-
-	Play 									Play
-	Alt+Play							NoAction
-	Shift+Play						NoAction
-	Control+Play					NoAction
-
-	Stop 									Stop
-	Alt+Stop							NoAction
-	Shift+Stop						NoAction
-	Control+Stop					NoAction
-
+	Play 								Play
+	Stop 								Stop
 	Record 								Record
-	Alt+Record						NoAction
-	Shift+Record					NoAction
-	Control+Record				NoAction
-
 	Rewind								Rewind
-	Alt+Rewind						NoAction
-	Shift+Rewind					NoAction
-	Control+Rewind				NoAction
-
-	FastForward						FastForward
-	Alt+FastForward				NoAction
-	Shift+FastForward			NoAction
-	Control+FastForward		NoAction
-
-	Loop							Reaper "1068" //toggle repeat
-	Alt+Loop							NoAction
-	Shift+Loop						NoAction
-	Control+Loop					NoAction
+	FastForward							FastForward
+	Loop								Reaper "1068" //toggle repeat
 
 ZoneEnd
 
@@ -158,68 +138,28 @@ Zone "Buttons"
 / RED Buttons
 
 	Red1							Reaper "40042" // GO TO START
-	
-
 	Red2							Reaper "40319" //Jump to next item
-
 	Red3							NoAction
-	
 	Red4							Reaper "41823" //add to render with last settings
 	Shift+Red4						Reaper "40015" //open render dialog
-
 	Red5							Reaper "40026" // Save
 	Shift+Red5						Reaper "40022" // save as
-
 	Red6							Reaper "40029"  //undo
 	Shift+Red6						Reaper "40072" //undo history
-
-
 	Red7							Reaper "41984"    //arm envelope param
-
 	Red8							NoACtion
 
 
 / GREEN BUTTONS
 
 	Green1								NoAction
-	Alt+Green1						NoAction
-	Shift+Green1					NoAction
-	Control+Green1				NoAction
-
 	Green2								NoAction
-	Alt+Green2						NoAction
-	Shift+Green2					NoAction
-	Control+Green2				NoAction
-
 	Green3								NoAction
-	Alt+Green3						NoAction
-	Shift+Green3					NoAction
-	Control+Green3				NoAction
-
-	Green4						GoZone Home
-	Alt+Green4						NoAction
-	Shift+Green4					NoAction
-	Control+Green4				NoAction
-
+	Green4								GoZone Home
 	Green5								NoAction
-	Alt+Green5						NoAction
-	Shift+Green5					NoAction
-	Control+Green5				NoAction
-
 	Green6								NoAction
-	Alt+Green6						NoAction
-	Shift+Green6					NoAction
-	Control+Green6				NoAction
-
 	Green7								NoAction
-	Alt+Green7						NoAction
-	Shift+Green7					NoAction
-	Control+Green7				NoAction
-
 	Green8								NoAction
-	Alt+Green8						NoAction
-	Shift+Green8					NoAction
-	Control+Green8				NoAction
 
 / BLUE Buttons
 
@@ -351,7 +291,7 @@ ZoneEnd
 
 Zone "JogWheel"
 
-	JogWheelPush				NoAction
+	JogWheelPush				Reaper "1007"
 	Alt+JogWheelPush			NoAction
 	Shift+JogWheelPush		NoAction
 	Control+JogWheelPush	NoAction
