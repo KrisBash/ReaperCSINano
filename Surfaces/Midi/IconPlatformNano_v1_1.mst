@@ -1,0 +1,555 @@
+/-------------------------------------------------------------------------------
+/ Control definitions for Icon Platform Nano
+/-------------------------------------------------------------------------------
+/ Single channel setup
+/ Version: 1.1
+/
+/ by: Mistik (kreativist.si@gmail.com)
+/
+/ Credits: WaveTrans (IconNano for beta version)
+/
+/	Tested and working on:
+/ CSI version: 1.0 (2020-12-04)
+/	Icon Platform Nano firmware version: 1.14
+/
+/ Last update: 2020-12-06
+/
+/-------------------------------------------------------------------------------
+
+/ MASTER CHANNEL									----------------------------------------------
+
+Widget MasterFader
+	Fader14Bit e8 7f 7f
+	FB_Fader14Bit e8 7f 7f
+	Touch 90 70 7f 90 70 00
+WidgetEnd
+
+/ CHANNEL													----------------------------------------------
+
+Widget Fader1
+	Fader14Bit e0 7f 7f
+	FB_Fader14Bit e0 7f 7f
+	Touch 90 68 7f 90 68 00
+WidgetEnd
+
+Widget RotaryPush1
+	Press 90 20 7f
+	WidgetEnd
+	Widget Rotary1
+	Encoder b0 10 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 10 7f
+	Toggle 90 20 7f
+WidgetEnd
+
+Widget Mute1
+	Press 90 10 7f 90 10 00
+	FB_TwoState 90 10 7f 90 10 00
+WidgetEnd
+
+Widget Solo1
+	Press 90 08 7f 90 08 00
+	FB_TwoState 90 08 7f 90 08 00
+WidgetEnd
+
+Widget RecordArm1
+	Press 90 00 7f
+	/FB_TwoState 90 00 7f 90 00 00
+WidgetEnd
+
+/ TRANSPORT												----------------------------------------------
+
+Widget Rewind
+	Press 90 5b 7f 90 5b 00
+	FB_TwoState 90 5b 7f 90 5b 00
+WidgetEnd
+
+Widget FastForward
+	Press 90 5c 7f 90 5c 00
+	FB_TwoState 90 5c 7f 90 5c 00
+WidgetEnd
+
+Widget Loop
+	Press 90 56 7f 90 56 00
+	FB_TwoState 90 56 7f 90 56 00
+WidgetEnd
+
+Widget Stop
+	Press 90 5d 7f 90 5d 00
+	FB_TwoState 90 5d 7f 90 5d 00
+WidgetEnd
+
+Widget Play
+	Press 90 5e 7f 90 5e 00
+	FB_TwoState 90 5e 7f 90 5e 00
+WidgetEnd
+
+Widget Record
+	Press 90 5f 7f 90 5e 00
+	FB_TwoState 90 5f 7f 90 5f 00
+WidgetEnd
+
+/ OTHER ROTARIES									----------------------------------------------
+
+Widget RotaryPush2
+	Press 90 21 7f
+WidgetEnd
+Widget Rotary2
+	Encoder b0 11 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 11 7f
+	Toggle 90 21 7f
+WidgetEnd
+
+Widget RotaryPush3
+	Press 90 22 7f
+WidgetEnd
+Widget Rotary3
+	Encoder b0 12 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 12 7f
+	Toggle 90 22 7f
+WidgetEnd
+
+Widget RotaryPush4
+	Press 90 23 7f
+WidgetEnd
+Widget Rotary4
+	Encoder b0 13 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 13 7f
+	Toggle 90 23 7f
+WidgetEnd
+
+/	Rotaries 1-4 on the nano are switched to 5-8
+/ by pressing the (5-8) button on the left side
+
+Widget RotaryPush5
+	Press 90 24 7f
+WidgetEnd
+Widget Rotary5
+	Encoder b0 14 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 14 7f
+	Toggle 90 24 7f
+WidgetEnd
+
+Widget RotaryPush6
+	Press 90 25 7f
+WidgetEnd
+Widget Rotary6
+	Encoder b0 15 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 15 7f
+	Toggle 90 25 7f
+WidgetEnd
+
+Widget RotaryPush7
+	Press 90 26 7f
+WidgetEnd
+Widget Rotary7
+	Encoder b0 16 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 16 7f
+	Toggle 90 26 7f
+WidgetEnd
+
+Widget RotaryPush8
+	Press 90 27 7f
+WidgetEnd
+Widget Rotary8
+	Encoder b0 17 7f [ < 41-49 > 01-09 ]
+	FB_Encoder b0 17 7f
+	Toggle 90 27 7f
+WidgetEnd
+
+/ DISPLAYS												----------------------------------------------
+/ For some reason, upper and lower were flipped on the Nano,
+/ so I flipped them here to leave the correct names in the zone files.
+
+Widget DisplayUpper1
+	FB_MCUDisplayLower 0
+WidgetEnd
+
+Widget DisplayLower1
+	FB_MCUDisplayUpper 0
+WidgetEnd
+
+Widget VUMeter1
+	FB_MCUVUMeter 0
+WidgetEnd
+
+Widget TimeDisplay
+	FB_MCUTimeDisplay
+WidgetEnd
+
+/ Master displays
+/	Currently unsupported in CSI v1.0
+
+Widget VUMeterMaster
+	FB_MCUVUMeter 0
+WidgetEnd
+
+Widget DisplayUpperMaster
+	FB_MCUDisplayLower 0
+WidgetEnd
+
+Widget DisplayLowerMaster
+	FB_MCUDisplayUpper 0
+WidgetEnd
+
+/ COLORED BUTTONS									----------------------------------------------
+
+/ RED BUTTONS											----------------------------------------------
+
+Widget Red1 	// Title on Reaper overlay: Flip
+	Press 90 32 7f
+	FB_TwoState 90 32 7f 90 32 00
+WidgetEnd
+
+Widget Red2 	// Title on Reaper overlay: Read
+	Press 90 4a 7f
+	FB_TwoState 90 4a 7f 90 4a 00
+WidgetEnd
+
+Widget Red3 	// Title on Reaper overlay: Write
+	Press 90 4b 7f
+	FB_TwoState 90 4b 7f 90 4b 00
+WidgetEnd
+
+Widget Red4 	// Title on Reaper overlay: Trim
+	Press 90 4c 7f 
+	FB_TwoState 90 4c 7f 90 4c 00
+WidgetEnd
+
+Widget Red5 	// Title on Reaper overlay: GlobalView
+	Press 90 33 7f
+	FB_TwoState 90 33 7f 90 33 00
+WidgetEnd
+
+Widget Red6 	// Title on Reaper overlay: Touch
+	Press 90 4d 7f
+	FB_TwoState 90 4d 7f 90 4d 00
+WidgetEnd
+
+Widget Red7 	// Title on Reaper overlay: Latch
+	Press 90 4e 7f
+	FB_TwoState 90 4e 7f 90 4e 00
+WidgetEnd
+
+Widget Red8 	// Title on Reaper overlay: LatchPrev
+	Press 90 4f 7f
+	FB_TwoState 90 4f 7f 90 4f 00
+WidgetEnd
+
+/ GREEN BUTTONS										----------------------------------------------
+
+Widget Green1 	// Title on Reaper overlay: TrackLearn
+	Press 90 3e 7f
+WidgetEnd
+
+Widget Green2 	// Title on Reaper overlay: Items, MCU "Inputs"
+	Press 90 3f 7f
+WidgetEnd
+
+ Widget Green3 	// Title on Reaper overlay: Takes, MCU "AudioTracks"
+	Press 90 40 7f
+WidgetEnd
+
+Widget Green4 	// Title on Reaper overlay: Create, MCU "AudioInstrument"
+	Press 90 41 7f
+WidgetEnd
+
+Widget Green5 	// Title on Reaper overlay: Project, MCU Aux
+	Press 90 42 7f
+WidgetEnd
+
+Widget Green6 	// Title on Reaper overlay: Mixer, MCU Busses
+	Press 90 43 7f
+WidgetEnd
+
+Widget Green7 	// Title on Reaper overlay: TrackFX, MCU Outputs
+	Press 90 44 7f
+WidgetEnd
+
+Widget Green8 	// Title on Reaper overlay: Master
+	Press 90 45 7f
+WidgetEnd
+
+/ BLUE BUTTONS										----------------------------------------------
+
+Widget Blue1 	// Title on Reaper overlay: nameValue
+ Press 90 34 7f
+WidgetEnd
+
+Widget Blue2 	// Title on Reaper overlay: Marker
+	Press 90 54 7f
+WidgetEnd
+
+Widget Blue3 	// Title on Reaper overlay: Nudge
+	Press 90 55 7f
+WidgetEnd
+
+Widget Blue4 	// Title on Reaper overlay: RecordMode
+	Press 90 57 7f
+WidgetEnd
+
+Widget Blue5 	// Title on Reaper overlay: smpteBeats
+	Press 90 35 7f
+WidgetEnd
+
+Widget Blue6 	// Title on Reaper overlay: Replace
+	Press 90 58 7f
+WidgetEnd
+
+Widget Blue7 	// Title on Reaper overlay: Click
+	Press 90 59 7f
+WidgetEnd
+
+Widget Blue8 	// Title on Reaper overlay: UnSoloAll
+	Press 90 5a 7f
+	FB_TwoState 90 5a 7f 90 5a 00
+WidgetEnd
+
+/ PURPLE BUTTONS									----------------------------------------------
+
+Widget Purple1 	// Title on Reaper overlay: Save
+	Press 90 50 7f 90 50 00
+WidgetEnd
+
+Widget Purple2 	// Title on Reaper overlay: Undo
+	Press 90 51 7f
+WidgetEnd
+
+Widget Purple3 	// Title on Reaper overlay: Redo, MCU "cancel"
+	Press 90 52 7f
+WidgetEnd
+
+Widget Purple4 	// Title on Reaper overlay: Enter
+	Press 90 53 7f
+WidgetEnd
+
+Widget Purple5 	// Title on Reaper overlay: Shift
+ Press 90 46 7f 90 46 00
+WidgetEnd
+
+Widget Purple6 	// Title on Reaper overlay: Option
+ Press 90 47 7f 90 47 00
+WidgetEnd
+
+Widget Purple7 	// Title on Reaper overlay: Control
+ Press 90 48 7f 90 48 00
+WidgetEnd
+
+Widget Purple8 	// Title on Reaper overlay: Alt
+ Press 90 49 7f 90 49 00
+WidgetEnd
+
+/ YELLOW BUTTONS									----------------------------------------------
+
+Widget Yellow1 	// Title on Reaper overlay: F1
+	Press 90 36 7f
+WidgetEnd
+
+Widget Yellow2 	// Title on Reaper overlay: F2
+	Press 90 37 7f
+WidgetEnd
+
+Widget Yellow3 	// Title on Reaper overlay: F3
+	Press 90 38 7f
+WidgetEnd
+
+Widget Yellow4 	// Title on Reaper overlay: F4
+	Press 90 39 7f
+WidgetEnd
+
+Widget Yellow5 	// Title on Reaper overlay: F5
+	Press 90 3a 7f
+WidgetEnd
+
+Widget Yellow6	// Title on Reaper overlay: F6
+	Press 90 3b 7f
+WidgetEnd
+
+Widget Yellow7	// Title on Reaper overlay: F7
+	Press 90 3c 7f
+WidgetEnd
+
+Widget Yellow8	// Title on Reaper overlay: F8
+	Press 90 3d 7f
+WidgetEnd
+
+/ RIGHT COLUMN BUTTONS						----------------------------------------------
+
+Widget RightCol1	// Title on Reaper overlay: Track
+	Press 90 28 7f 90 28 00 
+	FB_TwoState 90 28 7f 90 28 00
+WidgetEnd
+
+Widget RightCol2	// Title on Reaper overlay:
+	Press 90 29 7f 90 29 00
+	FB_TwoState 90 29 7f 90 29 00
+WidgetEnd
+
+Widget RightCol3	// Title on Reaper overlay: Pan
+	Press 90 2a 7f 90 2a 00
+	FB_TwoState 90 2a 7f 90 2a 00
+WidgetEnd
+
+/	I use this button as Control
+Widget RightCol4 	// Title on Reaper overlay: Plugin
+	Press 90 2b 7f  90 2b 00
+	FB_TwoState 90 2b 7f 90 2b 00
+WidgetEnd
+
+/	I use this button as Shift
+Widget RightCol5 	// Title on Reaper overlay: EQ
+	Press 90 2c 7f 90 2c 00
+	FB_TwoState 90 2c 7f 90 2c 00
+WidgetEnd
+
+/	I use this button as Alt
+Widget RightCol6 	// Title on Reaper overlay: blank
+	Press 90 2d 7f 90 2d 00
+	FB_TwoState 90 2d 7f 90 2d 00
+WidgetEnd
+
+
+/ LEFT COLUMN	BUTTONS							----------------------------------------------
+
+/ Select													----------------------------------------------
+/	track left and track right buttons on the left side will toggle through these MIDI messages,
+/ can be used for selecting tracks or you can define your own 8 custom actions
+
+Widget Select1
+	Press 90 18 7f 90 18 00
+	FB_TwoState 90 18 7f 90 18 00
+WidgetEnd
+
+Widget Select2
+	Press 90 19 7f 90 19 00
+	FB_TwoState 90 19 7f 90 19 00
+WidgetEnd
+
+Widget Select3
+	Press 90 1a 7f 90 1a 00
+	FB_TwoState 90 1a 7f 90 1a 00
+WidgetEnd
+
+Widget Select4
+	Press 90 1b 7f 90 1b 00
+	FB_TwoState 90 1b 7f 90 1b 00
+WidgetEnd
+
+Widget Select5
+	Press 90 1c 7f 90 1c 00
+	FB_TwoState 90 1c 7f 90 1c 00
+WidgetEnd
+
+Widget Select6
+	Press 90 1d 7f 90 1d 00
+	FB_TwoState 90 1d 7f 90 1d 00
+WidgetEnd
+
+Widget Select7
+	Press 90 1e 7f 90 1e 00
+	FB_TwoState 90 1e 7f 90 1e 00
+WidgetEnd
+
+Widget Select8
+	Press 90 1f 7f 90 1f 00
+	FB_TwoState 90 1f 7f 90 1f 00
+WidgetEnd
+
+/ prev 8
+Widget BankLeft
+	Press 90 2E 7f 90 2E 00
+	FB_TwoState 90 2e 7f 90 2e 00
+WidgetEnd
+
+/ next 8
+Widget BankRight
+	Press 90 2F 7f 90 2F 00
+	FB_TwoState 90 2f 7f 90 2f 00
+WidgetEnd
+
+/ JOGWHEEL
+
+Widget JogWheelCW
+	Press b0 3c 01
+WidgetEnd
+
+Widget JogWheelCW2
+	Press b0 3c 02
+WidgetEnd
+
+Widget JogWheelCW3
+	Press b0 3c 03
+WidgetEnd
+
+Widget JogWheelCW4
+	Press b0 3c 04
+WidgetEnd
+
+Widget JogWheelCW5
+	Press b0 3c 05
+WidgetEnd
+
+Widget JogWheelCW6
+	Press b0 3c 06
+WidgetEnd
+
+Widget JogWheelCW7
+	Press b0 3c 07
+WidgetEnd
+
+Widget JogWheelCCW
+	Press b0 3c 41
+WidgetEnd
+
+Widget JogWheelCCW2
+	Press b0 3c 42
+WidgetEnd
+
+Widget JogWheelCCW3
+	Press b0 3c 43
+WidgetEnd
+
+Widget JogWheelCC4
+	Press b0 3c 44
+WidgetEnd
+
+Widget JogWheelCCW5
+	Press b0 3c 45
+WidgetEnd
+
+Widget JogWheelCCW6
+	Press b0 3c 46
+WidgetEnd
+
+Widget JogWheelCCW7
+	Press b0 3c 47
+WidgetEnd
+
+Widget JogWheelPush
+	Press 90 65 7f 90 65 00
+	FB_TwoState 90 65 7f 90 65 00
+WidgetEnd
+
+Widget RZoomHoriz
+	Press 90 64 7F 90 64 00
+	FB_TwoState 90 64 7F 90 64 00
+WidgetEnd
+
+Widget JogWheelRotary
+	Encoder b0 3c 7f [ < 41-49 > 01-09 ]
+WidgetEnd
+
+Widget Up
+	Press 90 61 00
+WidgetEnd
+
+Widget Down
+	Press 90 60 00
+WidgetEnd
+
+Widget Left
+	Press 90 62 00
+WidgetEnd
+
+Widget Right
+	Press 90 63 00
+WidgetEnd
