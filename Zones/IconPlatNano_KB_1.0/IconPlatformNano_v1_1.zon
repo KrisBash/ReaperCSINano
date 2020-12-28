@@ -1,4 +1,3 @@
-/ EDIT this file to your liking
 /	Refer to action reference to assign actions to controls:
 /	https://github.com/GeoffAWaddington/reaper_csurf_integrator/wiki/Action-Reference
 
@@ -12,7 +11,7 @@
 / Update history
 /
 / v1.0- 2020-12-06
-/ - Initial version, forked from Mistik 1.1
+/ - Initial version, initially forked from Mistik 1.1
 
 Zone "Home"
 	OnTrackSelection MapSelectedTrackSendsToWidgets
@@ -29,13 +28,12 @@ ZoneEnd
 Zone "Channel"
 	SelectedTrackNavigator
 	Fader|							TrackVolume
-	Rotary|							MCUTrackPan
+	/Rotary|							MCUTrackPan
 
 / ROTARY Controls
-
-	Rotary1							FocusedFXParam
-	Rotary2							FocusedFXParam
-	Rotary3							NoAction
+	Rotary1							MCUTrackPan
+	Rotary2							FocusedFXParam //Encode last touched FX param
+	Rotary3							NoAction /FocusedFXParam
 	Rotary4							TrackVolume
 	Rotary5							NoAction
 	Rotary6							NoAction
@@ -52,7 +50,6 @@ Zone "Channel"
 	RotaryPush8						NoAction
 
 / DISPLAYS
-
 	VUMeter|						TrackOutputMeter // or TrackOutputMeterMaxPeakLR
 	TimeDisplay|					TimeDisplay
 	DisplayUpper| MCUTrackPanDisplay //Rotary
@@ -103,17 +100,17 @@ ZoneEnd
 Zone "Buttons"
 
 /	RIGHT COLUMN buttons (6 buttons on the right)
-
 / I use the bottom 3 buttons on the right as Alt, Shift and Control modifiers
 /	but you can assign these modifiers to any other button you want
 
 	RightCol1						Shift
-	RightCol2						NoAction
-	RightCol3						NoAction
-
+	RightCol2						Reaper "40026" // Save
+	Shift+RightCol2					Reaper "40022" // save as
+	RightCol3						Reaper "40029"  //undo
+	Shift+RightCol3					Reaper "40072" //undo history
 	RightCol4						Reaper "_S&M_SHOWFXCHAINSEL" //show FX chain
 	RightCol5						Reaper "41589" // ITEM PROPERTIES
-	RightCol6						Reaper "40929" //open render queue
+	RightCol6						Alt
 
 /	LEFT COLUMN buttons	(6 buttons on the left)
 
@@ -122,22 +119,22 @@ Zone "Buttons"
 	BankLeft		Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
 	BankRight 		Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
 
-/ The lock button is hardwired and cannot be assigned
-/	when engaged, the fader will follow automation, but won't send changes to tracks (very useful)
 
 / RED Buttons
 
 	Red1							Reaper "40042" // GO TO START
 	Red2							Reaper "40319" //Jump to next item
-	Red3							NoAction
+	Red3							Reaper "40406" //toggle volume automation
+	Shift+Red3						Reaper "40292" //Automation envelope dialog
 	Red4							Reaper "41823" //add to render with last settings
 	Shift+Red4						Reaper "40015" //open render dialog
-	Red5							Reaper "40026" // Save
-	Shift+Red5						Reaper "40022" // save as
-	Red6							Reaper "40029"  //undo
-	Shift+Red6						Reaper "40072" //undo history
+	Red5							Reaper "40025" //open project
+	Shift+Red5						Reaper "_S&M_NEWTAB_PRJTEMPLATEl" //open project in new tab
+	Hold+Red5						Reaper "40021" //project settings
+	Red6							NoAction
+	Shift+Red6						NoAction
 	Red7							Reaper "41984"    //arm envelope param
-	Red8							NoACtion
+	Red8							Reaper "40929" //open render queue
 
 
 / GREEN BUTTONS
@@ -146,63 +143,107 @@ Zone "Buttons"
 	Green1							Reaper "40702" // CREATE NEW TRACK
 	Green2							Reaper "40062" // DUPLICATE TRACK
 	Green3							Reaper "1041" // FOLDER COLLAPSE STATE1041
-	Green4							GoZone Home
-	Green5							Reaper "40026" // Save
-	Shift+Green5					Reaper "40022" // save as
-	Green6							Reaper "40029"  //undo
-	Shift+Green6					Reaper "40072" //undo history
+	Green4							NoAction
+	Green5							NoAction
+	Shift+Green5					NoAction
+	Green6							NoAction
+	Shift+Green6					NoAction
 	Green7							Reaper "40360" //Set selected tracks to one random color
 	Green8							Reaper "40005" // REMOVE TRACK
+
+/ BLUE BUTTONS
+//Midi Editing
+	Blue1							Reaper "40009" /quantize dialog
+	Blue2							Reaper "40457" /humanize dialog
+	Blue5							NoAction
+	Shift+Blue5						NoAction
+	Blue6							Reaper  "40699" /cut items
+	Blue7							Reaper "40058" /paste items
+	Blue8							Reaper "40002" /delete notes
+
+/PURPLE BUTTONS	
+	/Purple5							/Shift
+	/Purple7							/Control
+	/Purple8							/Alt
 
 
 ZoneEnd
 
 Zone "JogWheel"
-	JogWheelPush			Reaper "_BR_PLAY_STOP_MOUSECURSOR" 
-	Alt+JogWheelPush		NoAction
+	/JogWheelPush			Shift /Reaper "_BR_PLAY_STOP_MOUSECURSOR" 
+	Alt+JogWheelPush		Reaper "40069" /jump to time window
 	Shift+JogWheelPush		NoAction
 	Control+JogWheelPush	NoAction
 
-	JogWheelRotary			Reaper "988" // testing horiz scroll
-/ scroll view left
-	JogWheelCW 	Reaper "40140"
-	JogWheelCW2 	Reaper "40140"
-	JogWheelCW3 	Reaper "40140"
-	JogWheelCW4 	Reaper "40140"
-	JogWheelCW5 	Reaper "40140"
-	JogWheelCW6 	Reaper "40140"
-	JogWheelCW7 	Reaper "40140"
-
-/scroll view right
-	JogWheelCCW 	Reaper "40141"
-	JogWheelCCW2 	Reaper "40141"
-	JogWheelCCW3 	Reaper "40141"
-	JogWheelCCW4 	Reaper "40141"
-	JogWheelCCW5 	Reaper "40141"
-	JogWheelCCW6 	Reaper "40141"
-	JogWheelCCW7 	Reaper "40141"
+/Jog - move play head
+	Shift+JogWheelCW 				Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW5 			Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW6 			Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW7 			Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCCW 			Reaper "40646" // GRID JOG JOG LEFT
+	Shift+JogWheelCCW2 			Reaper "40646" // GRID JOG JOG LEFT
+	Shift+JogWheelCCW3 			Reaper "40646" // GRID JOG JOG LEFT
+	Shift+JogWheelCCW4 			Reaper "40646" // GRID JOG JOG LEFT
+	Shift+JogWheelCCW5 			Reaper "40646" // GRID JOG JOG LEFT
+	Shift+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
+	Shift+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
 	
+/Jog - move play head
+	JogWheelPush+JogWheelCW 				Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCW5 			Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCW6 			Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCW7 			Reaper "40647" // GRID JOG RIGHT
+	JogWheelPush+JogWheelCCW 			Reaper "40646" // GRID JOG JOG LEFT
+	JogWheelPush+JogWheelCCW2 			Reaper "40646" // GRID JOG JOG LEFT
+	JogWheelPush+JogWheelCCW3 			Reaper "40646" // GRID JOG JOG LEFT
+	JogWheelPush+JogWheelCCW4 			Reaper "40646" // GRID JOG JOG LEFT
+	JogWheelPush+JogWheelCCW5 			Reaper "40646" // GRID JOG JOG LEFT
+	JogWheelPush+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
+	JogWheelPush+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
+	
+/Jog - move play head
+	Alt+JogWheelCW 				Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCW5 			Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCW6 			Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCW7 			Reaper "40647" // GRID JOG RIGHT
+	Alt+JogWheelCCW 			Reaper "40646" // GRID JOG JOG LEFT
+	Alt+JogWheelCCW2 			Reaper "40646" // GRID JOG JOG LEFT
+	Alt+JogWheelCCW3 			Reaper "40646" // GRID JOG JOG LEFT
+	Alt+JogWheelCCW4 			Reaper "40646" // GRID JOG JOG LEFT
+	Alt+JogWheelCCW5 			Reaper "40646" // GRID JOG JOG LEFT
+	Alt+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
+	Alt+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
 
-	/Control+JogWheel
-	Control+JogWheelCW 				Reaper 41667	
-	Control+JogWheelCW2 			Reaper 41667
-	Control+JogWheelCW3 			Reaper 41667
-	Control+JogWheelCW4 			Reaper 41667
-	Control+JogWheelCW5 			Reaper 41667
-	Control+JogWheelCW6 			Reaper 41667
-	Control+JogWheelCW7 			Reaper 41667
 
-	Control+JogWheelCCW 			Reaper	41666
-	Control+JogWheelCCW2		 	Reaper	41666
-	Control+JogWheelCCW3		 	Reaper	41666
-	Control+JogWheelCCW4		 	Reaper	41666
-	Control+JogWheelCCW5		 	Reaper	41666
-	Control+JogWheelCCW6		 	Reaper	41666
-	Control+JogWheelCCW7		 	Reaper	41666
+/ scroll view 
+	JogWheelCCW 	Reaper "40140"
+	JogWheelCCW2 	Reaper "40140"
+	JogWheelCCW3 	Reaper "40140"
+	JogWheelCCW4 	Reaper "40140"
+	JogWheelCCW5 	Reaper "40140"
+	JogWheelCCW6 	Reaper "40140"
+	JogWheelCCW7 	Reaper "40140"
+	JogWheelCW 		Reaper "40141"
+	JogWheelCW2 	Reaper "40141"
+	JogWheelCW3 	Reaper "40141"
+	JogWheelCW4 	Reaper "40141"
+	JogWheelCW5 	Reaper "40141"
+	JogWheelCW6 	Reaper "40141"
+	JogWheelCW7 	Reaper "40141"
 
-	/Zoom
+/Zoom
 	Zoom+Up 				Reaper "40111"
 	Zoom+Down 				Reaper "40112"
 	Zoom+Right 				Reaper "1012"
 	Zoom+Left 				Reaper "1011"
+
 ZoneEnd
