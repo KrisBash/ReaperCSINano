@@ -52,8 +52,8 @@ Zone "Channel"
 / DISPLAYS
 	VUMeter|						TrackOutputMeter // or TrackOutputMeterMaxPeakLR
 	TimeDisplay|					TimeDisplay
-	DisplayUpper| MCUTrackPanDisplay //Rotary
-	DisplayLower| TrackNameDisplay 
+	DisplayUpper| 					MCUTrackPanDisplay //Rotary
+	DisplayLower| 					TrackNameDisplay 
 
 
 / TRACK Controls
@@ -77,7 +77,6 @@ ZoneEnd
 
 Zone "MasterChannel"
 	/	Master track (accessed by pressing the Master button on Icon Nano)
-	/	Note that the VUMeter and displays for the master channel are currently unsupported in CSI v1.0
 	MasterTrackNavigator
 	MasterFader						TrackVolume
 	DisplayUpperMaster				TrackNameDisplay
@@ -87,7 +86,7 @@ Zone "MasterChannel"
 ZoneEnd
 
 Zone "Transport"
-/ TRANSPORT buttons
+	/ TRANSPORT buttons
 	Play 							Play
 	Stop 							Stop
 	Record 							Record
@@ -99,10 +98,7 @@ ZoneEnd
 
 Zone "Buttons"
 
-/	RIGHT COLUMN buttons (6 buttons on the right)
-/ I use the bottom 3 buttons on the right as Alt, Shift and Control modifiers
-/	but you can assign these modifiers to any other button you want
-
+	/	RIGHT COLUMN buttons (6 buttons on the right)
 	RightCol1						Shift
 	RightCol2						Reaper "40026" // Save
 	Shift+RightCol2					Reaper "40022" // save as
@@ -112,16 +108,14 @@ Zone "Buttons"
 	RightCol5						Reaper "41589" // ITEM PROPERTIES
 	RightCol6						Alt
 
-/	LEFT COLUMN buttons	(6 buttons on the left)
-
-/ The <<8 and 8>> buttons, defined as BankLeft and BankRight are used to change track banks (jump by 8 tracks)
-/ They are assignable to actions, but n	ote that they are hardwired to also trigger the select message for the first track (Select1)
-	BankLeft		Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
-	BankRight 		Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
+	/	LEFT COLUMN buttons	(6 buttons on the left)
+	//	These bank buttons are of limited use, but used here to scroll presets for plugins
+	BankLeft						Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
+	BankRight 						Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
 
 
-/ RED Buttons
-
+	/ 	RED Buttons
+	// 	Most common functions
 	Red1							Reaper "40042" // GO TO START
 	Red2							Reaper "40319" //Jump to next item
 	Red3							Reaper "40406" //toggle volume automation
@@ -137,9 +131,8 @@ Zone "Buttons"
 	Red8							Reaper "40929" //open render queue
 
 
-/ GREEN BUTTONS
-//Track & item arrangement functions
-
+	/ 	GREEN BUTTONS
+	//	Track & item arrangement functions
 	Green1							Reaper "40702" // CREATE NEW TRACK
 	Shift+Green1					Reaper "40214" // New midi item
 	Green2							Reaper "40062" // DUPLICATE TRACK
@@ -153,8 +146,8 @@ Zone "Buttons"
 	Shift+Green7					Reaper "40360" // Set selected tracks to one random color
 	Shift+Green8					Reaper "_SWS_COLCHILDREN" //set selected track children to same color
 
-/ BLUE BUTTONS
-//Midi Editing
+	/ 	BLUE BUTTONS
+	//	Midi Editing
 	Blue1							Reaper "40009" /quantize dialog
 	Blue2							Reaper "40457" /humanize dialog
 	Blue5							NoAction
@@ -163,74 +156,70 @@ Zone "Buttons"
 	Blue7							Reaper "40058" /paste items
 	Blue8							Reaper "40697" /delete notes
 
-/PURPLE BUTTONS	
-	/Purple5							/Shift
-	/Purple7							/Control
-	/Purple8							/Alt
+	/PURPLE BUTTONS	
 
 
 ZoneEnd
 
 Zone "JogWheel"
-	JogWheelPush			Shift /Reaper "_BR_PLAY_STOP_MOUSECURSOR" 
-	Alt+JogWheelPush		Reaper "40069" /jump to time window
-	/Shift+JogWheelPush		NoAction
-	/Control+JogWheelPush	NoAction
+	JogWheelPush					Shift 
+	Alt+JogWheelPush				Reaper "40069" /jump to time window
+	/Shift+JogWheelPush				NoAction
+	/Control+JogWheelPush			NoAction
 
-/Jog - move play head
-	Shift+JogWheelCW 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCW5 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCW6 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCW7 			Reaper "40647" // GRID JOG RIGHT
-	Shift+JogWheelCCW 			Reaper "40646" // GRID JOG JOG LEFT
-	Shift+JogWheelCCW2 			Reaper "40646" // GRID JOG JOG LEFT
-	Shift+JogWheelCCW3 			Reaper "40646" // GRID JOG JOG LEFT
-	Shift+JogWheelCCW4 			Reaper "40646" // GRID JOG JOG LEFT
-	Shift+JogWheelCCW5 			Reaper "40646" // GRID JOG JOG LEFT
-	Shift+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
-	Shift+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
-	
+	/	V Scroll 
+	Alt+JogWheelCW 					Reaper "40139" 
+	Alt+JogWheelCW2 				Reaper "440139"
+	Alt+JogWheelCW3 				Reaper "40139" 
+	Alt+JogWheelCW4 				Reaper "40139" 
+	Alt+JogWheelCW5 				Reaper "40139"
+	Alt+JogWheelCW6 				Reaper "40139" 
+	Alt+JogWheelCW7 				Reaper "40139" 
+	Alt+JogWheelCCW 				Reaper "40138" 
+	Alt+JogWheelCCW2 				Reaper "40138" 
+	Alt+JogWheelCCW3 				Reaper "40138" 
+	Alt+JogWheelCCW4 				Reaper "40138" 
+	Alt+JogWheelCCW5 				Reaper "40138" 
+	Alt+JogWheelCCW6 				Reaper "40138" 
+	Alt+JogWheelCCW7 				Reaper "40138" 
 
-/V Scroll 
-	Alt+JogWheelCW 				Reaper "40139" 
-	Alt+JogWheelCW2 			Reaper "440139"
-	Alt+JogWheelCW3 			Reaper "40139" 
-	Alt+JogWheelCW4 			Reaper "40139" 
-	Alt+JogWheelCW5 			Reaper "40139"
-	Alt+JogWheelCW6 			Reaper "40139" 
-	Alt+JogWheelCW7 			Reaper "40139" 
-	Alt+JogWheelCCW 			Reaper "40138" 
-	Alt+JogWheelCCW2 			Reaper "40138" 
-	Alt+JogWheelCCW3 			Reaper "40138" 
-	Alt+JogWheelCCW4 			Reaper "40138" 
-	Alt+JogWheelCCW5 			Reaper "40138" 
-	Alt+JogWheelCCW6 			Reaper "40138" 
-	Alt+JogWheelCCW7 			Reaper "40138" 
+	/	Jog - move play head
+	Shift+JogWheelCW 				Reaper "40647" 
+	Shift+JogWheelCW2 				Reaper "40647" 
+	Shift+JogWheelCW3 				Reaper "40647" 
+	Shift+JogWheelCW4 				Reaper "40647" 
+	Shift+JogWheelCW5 				Reaper "40647" 
+	Shift+JogWheelCW6 				Reaper "40647" 
+	Shift+JogWheelCW7 				Reaper "40647" 
+	Shift+JogWheelCCW 				Reaper "40646" 
+	Shift+JogWheelCCW2 				Reaper "40646" 
+	Shift+JogWheelCCW3 				Reaper "40646" 
+	Shift+JogWheelCCW4 				Reaper "40646" 
+	Shift+JogWheelCCW5 				Reaper "40646" 
+	Shift+JogWheelCCW6 				Reaper "40646" 
+	Shift+JogWheelCCW7 				Reaper "40646" 
 
 
-/ scroll view 
-	JogWheelCCW 	Reaper "40140"
-	JogWheelCCW2 	Reaper "40140"
-	JogWheelCCW3 	Reaper "40140"
-	JogWheelCCW4 	Reaper "40140"
-	JogWheelCCW5 	Reaper "40140"
-	JogWheelCCW6 	Reaper "40140"
-	JogWheelCCW7 	Reaper "40140"
-	JogWheelCW 		Reaper "40141"
-	JogWheelCW2 	Reaper "40141"
-	JogWheelCW3 	Reaper "40141"
-	JogWheelCW4 	Reaper "40141"
-	JogWheelCW5 	Reaper "40141"
-	JogWheelCW6 	Reaper "40141"
-	JogWheelCW7 	Reaper "40141"
+	/ 	Scroll view - default jogwheel behavior
+	JogWheelCCW 					Reaper "40140"
+	JogWheelCCW2 					Reaper "40140"
+	JogWheelCCW3 					Reaper "40140"
+	JogWheelCCW4 					Reaper "40140"
+	JogWheelCCW5 					Reaper "40140"
+	JogWheelCCW6 					Reaper "40140"
+	JogWheelCCW7 					Reaper "40140"
+	JogWheelCW 						Reaper "40141"
+	JogWheelCW2 					Reaper "40141"
+	JogWheelCW3 					Reaper "40141"
+	JogWheelCW4 					Reaper "40141"
+	JogWheelCW5 					Reaper "40141"
+	JogWheelCW6 					Reaper "40141"
+	JogWheelCW7 					Reaper "40141"
 
-/Zoom
-	Zoom+Up 				Reaper "40111"
-	Zoom+Down 				Reaper "40112"
-	Zoom+Right 				Reaper "1012"
-	Zoom+Left 				Reaper "1011"
+	/	Zoom
+	Zoom+Up 					Reaper "40111"
+	Zoom+Down 					Reaper "40112"
+	Zoom+Right 					Reaper "1012"
+	Zoom+Left 					Reaper "1011"
 
 ZoneEnd

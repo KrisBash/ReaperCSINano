@@ -1,9 +1,13 @@
 Zone "VST3i: Pigments (Arturia)"
 	FocusedFXNavigator
 
-	Rotary1	FXParam 1 "Macro 1"
-	Rotary2	FXParam 2 "Macro 2"
-    Rotary3	FXParam 3 "Macro 3"
-    Rotary4	FXParam 4 "Macro 4"
-
+	Rotary1	            FXParam 1 "Macro 1"
+	Rotary2	            FXParam 2 "Macro 2"
+    Rotary3	            FXParam 3 "Macro 3"
+    Rotary4	            FXParam 4 "Macro 4"
+    Rotary5 	        FXParam 165 "F1 Cutoff"
+	Rotary6             FXParam 166 "F1 Resonance"
+	Rotary7             FXParam 183 "F2 Cutoff"
+	Rotary8             FXParam 184 "F2 Resonance"
+    
 ZoneEnd
