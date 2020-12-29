@@ -26,21 +26,21 @@ Zone "Home"
 ZoneEnd
 
 Zone "Channel"
+	OnFXFocus MapFocusedFXToWidgets
 	SelectedTrackNavigator
 	Fader|							TrackVolume
-	/Rotary|							MCUTrackPan
 
 / ROTARY Controls
 	Rotary1							MCUTrackPan
-	Rotary2							FocusedFXParam //Encode last touched FX param
-	Rotary3							NoAction /FocusedFXParam
+	Rotary2							FocusedFXParam /Encode last touched FX param
+	Rotary3							FocusedFXParam
 	Rotary4							TrackVolume
 	Rotary5							NoAction
 	Rotary6							NoAction
 	Rotary7							NoAction
 	Rotary8							NoAction
 
-	RotaryPush1						NoAction
+	RotaryPush1						Reaper "_XENAKIOS_PANTRACKSCENTER" //Pan track to center
 	RotaryPush2						NoAction
 	RotaryPush3						NoAction
 	RotaryPush4						NoAction
@@ -130,7 +130,7 @@ Zone "Buttons"
 	Shift+Red4						Reaper "40015" //open render dialog
 	Red5							Reaper "40025" //open project
 	Shift+Red5						Reaper "_S&M_NEWTAB_PRJTEMPLATEl" //open project in new tab
-	Hold+Red5						Reaper "40021" //project settings
+	Alt+Red5						Reaper "40021" //project settings
 	Red6							NoAction
 	Shift+Red6						NoAction
 	Red7							Reaper "41984"    //arm envelope param
@@ -138,18 +138,20 @@ Zone "Buttons"
 
 
 / GREEN BUTTONS
-//Track Management
+//Track & item arrangement functions
 
 	Green1							Reaper "40702" // CREATE NEW TRACK
+	Shift+Green1					Reaper "40214" // New midi item
 	Green2							Reaper "40062" // DUPLICATE TRACK
-	Green3							Reaper "1041" // FOLDER COLLAPSE STATE1041
-	Green4							NoAction
-	Green5							NoAction
-	Shift+Green5					NoAction
-	Green6							NoAction
-	Shift+Green6					NoAction
-	Green7							Reaper "40360" //Set selected tracks to one random color
-	Green8							Reaper "40005" // REMOVE TRACK
+	Green3							Reaper "1041" // FOLDER COLLAPSE STATE
+	Green4							Reaper "40697" // Delete track or item
+	Green5							Reaper "40698" // copy items or tracks
+	Shift+Green5					Reaper "40059" // cut items or tracks
+	Green6							Reaper "42398" // paste
+	Green7							Reaper "40012" // split items at cursor	
+	Green8							Reaper "40035" // select all (ctrl+a)
+	Shift+Green7					Reaper "40360" // Set selected tracks to one random color
+	Shift+Green8					Reaper "_SWS_COLCHILDREN" //set selected track children to same color
 
 / BLUE BUTTONS
 //Midi Editing
@@ -159,7 +161,7 @@ Zone "Buttons"
 	Shift+Blue5						NoAction
 	Blue6							Reaper  "40699" /cut items
 	Blue7							Reaper "40058" /paste items
-	Blue8							Reaper "40002" /delete notes
+	Blue8							Reaper "40697" /delete notes
 
 /PURPLE BUTTONS	
 	/Purple5							/Shift
@@ -170,13 +172,13 @@ Zone "Buttons"
 ZoneEnd
 
 Zone "JogWheel"
-	/JogWheelPush			Shift /Reaper "_BR_PLAY_STOP_MOUSECURSOR" 
+	JogWheelPush			Shift /Reaper "_BR_PLAY_STOP_MOUSECURSOR" 
 	Alt+JogWheelPush		Reaper "40069" /jump to time window
-	Shift+JogWheelPush		NoAction
-	Control+JogWheelPush	NoAction
+	/Shift+JogWheelPush		NoAction
+	/Control+JogWheelPush	NoAction
 
 /Jog - move play head
-	Shift+JogWheelCW 				Reaper "40647" // GRID JOG RIGHT
+	Shift+JogWheelCW 			Reaper "40647" // GRID JOG RIGHT
 	Shift+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
 	Shift+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
 	Shift+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
@@ -191,37 +193,22 @@ Zone "JogWheel"
 	Shift+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
 	Shift+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
 	
-/Jog - move play head
-	JogWheelPush+JogWheelCW 				Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCW5 			Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCW6 			Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCW7 			Reaper "40647" // GRID JOG RIGHT
-	JogWheelPush+JogWheelCCW 			Reaper "40646" // GRID JOG JOG LEFT
-	JogWheelPush+JogWheelCCW2 			Reaper "40646" // GRID JOG JOG LEFT
-	JogWheelPush+JogWheelCCW3 			Reaper "40646" // GRID JOG JOG LEFT
-	JogWheelPush+JogWheelCCW4 			Reaper "40646" // GRID JOG JOG LEFT
-	JogWheelPush+JogWheelCCW5 			Reaper "40646" // GRID JOG JOG LEFT
-	JogWheelPush+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
-	JogWheelPush+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
-	
-/Jog - move play head
-	Alt+JogWheelCW 				Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCW2 			Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCW3 			Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCW4 			Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCW5 			Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCW6 			Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCW7 			Reaper "40647" // GRID JOG RIGHT
-	Alt+JogWheelCCW 			Reaper "40646" // GRID JOG JOG LEFT
-	Alt+JogWheelCCW2 			Reaper "40646" // GRID JOG JOG LEFT
-	Alt+JogWheelCCW3 			Reaper "40646" // GRID JOG JOG LEFT
-	Alt+JogWheelCCW4 			Reaper "40646" // GRID JOG JOG LEFT
-	Alt+JogWheelCCW5 			Reaper "40646" // GRID JOG JOG LEFT
-	Alt+JogWheelCCW6 			Reaper "40646" // GRID JOG JOG LEFT
-	Alt+JogWheelCCW7 			Reaper "40646" // GRID JOG JOG LEFT
+
+/V Scroll 
+	Alt+JogWheelCW 				Reaper "40139" 
+	Alt+JogWheelCW2 			Reaper "440139"
+	Alt+JogWheelCW3 			Reaper "40139" 
+	Alt+JogWheelCW4 			Reaper "40139" 
+	Alt+JogWheelCW5 			Reaper "40139"
+	Alt+JogWheelCW6 			Reaper "40139" 
+	Alt+JogWheelCW7 			Reaper "40139" 
+	Alt+JogWheelCCW 			Reaper "40138" 
+	Alt+JogWheelCCW2 			Reaper "40138" 
+	Alt+JogWheelCCW3 			Reaper "40138" 
+	Alt+JogWheelCCW4 			Reaper "40138" 
+	Alt+JogWheelCCW5 			Reaper "40138" 
+	Alt+JogWheelCCW6 			Reaper "40138" 
+	Alt+JogWheelCCW7 			Reaper "40138" 
 
 
 / scroll view 
