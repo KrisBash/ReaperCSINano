@@ -1,0 +1,13 @@
+Zone "VST3i: Statement Lead (Softube)"
+	FocusedFXNavigator
+
+	Rotary1         FXParam 19 "Cut-Off"
+	Rotary2         FXParam 20 "Resonance"
+	Rotary3         FXParam 21 "Env Type"
+	Rotary4         FXParam 22 "Env Amount"
+	Rotary5         FXParam 10 "Punch"
+	Rotary6         FXParam 11 "Release"
+	Rotary7         FXParam 17 "Aging"
+    Rotary8         FXParam 7 "Source Mix"
+
+ZoneEnd

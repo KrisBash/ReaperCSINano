@@ -1,0 +1,13 @@
+Zone "VST3i: Model 72 Synthesizer System (Softube)"
+	FocusedFXNavigator
+
+    Rotary1             FXParam 29 "Cutoff Frequency"
+    Rotary2             FXParam 30 "Resonance"
+    Rotary3             FXParam 31 "Envelope Amount"
+    Rotary4             FXParam 46 "Mod Amount"
+    Rotary5             FXParam 34 "Filter Attack"
+    Rotary6             FXParam 35 "Filter Decay"
+    Rotary7             FXParam 36 "Filter Sustain"
+    Rotary8             FXParam 37 "Release"
+
+ZoneEnd

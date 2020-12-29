@@ -1,0 +1,13 @@
+Zone "VST3i: Analog Lab 4 (Arturia)"
+	FocusedFXNavigator
+
+	Rotary1	FXParam 2 "P1"
+	Rotary2	FXParam 4 "P2"
+    Rotary3	FXParam 6 "P3"
+    Rotary4	FXParam 8 "P4"
+    Rotary5	FXParam 3 "P5"
+    Rotary6	FXParam 5 "P6"
+    Rotary7	FXParam 7 "P7"
+    Rotary8	FXParam 9 "P8"
+
+ZoneEnd
