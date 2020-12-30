@@ -1,6 +1,8 @@
 Zone "VST3i: Analog Lab V (Arturia)"
 	FocusedFXNavigator
 
+    DisplayUpper| 			    FocusedFXParamNameDisplay
+	DisplayLower|               FocusedFXParamValueDisplay
 	Rotary1	FXParam 2 "P1"
 	Rotary2	FXParam 4 "P2"
     Rotary3	FXParam 6 "P3"

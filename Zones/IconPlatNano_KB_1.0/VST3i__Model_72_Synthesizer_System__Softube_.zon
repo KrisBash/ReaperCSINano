@@ -1,6 +1,8 @@
 Zone "VST3i: Model 72 Synthesizer System (Softube)"
 	FocusedFXNavigator
 
+    DisplayUpper| 			    FocusedFXParamNameDisplay
+	DisplayLower|               FocusedFXParamValueDisplay
     Rotary1             FXParam 29 "Cutoff Frequency"
     Rotary2             FXParam 30 "Resonance"
     Rotary3             FXParam 31 "Envelope Amount"

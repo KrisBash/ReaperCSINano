@@ -1,6 +1,8 @@
 Zone "VST3i: Statement Lead (Softube)"
 	FocusedFXNavigator
 
+    DisplayUpper| 			    FocusedFXParamNameDisplay
+	DisplayLower|               FocusedFXParamValueDisplay
 	Rotary1         FXParam 19 "Cut-Off"
 	Rotary2         FXParam 20 "Resonance"
 	Rotary3         FXParam 21 "Env Type"

@@ -1,6 +1,8 @@
 Zone "VST3i: Monoment Bass (Softube)"
 	FocusedFXNavigator
 
+    DisplayUpper| 			    FocusedFXParamNameDisplay
+	DisplayLower|               FocusedFXParamValueDisplay
    	Rotary1         FXParam 16 "Cut-Off"
 	Rotary2         FXParam 17 "Resonance"
     Rotary3         FXParam 18 "Env Type"

@@ -1,6 +1,8 @@
 Zone "VST3i: Parallels (Softube)"
 	FocusedFXNavigator
 
+    DisplayUpper| 			    FocusedFXParamNameDisplay
+	DisplayLower|               FocusedFXParamValueDisplay
     Rotary1	        FXParam 238 "Src 1 Color"
     Rotary2         FXParam 259 "Src 2 Color"
     Rotary3         FXParam 273 "Shaper 1 Frequency"

@@ -1,6 +1,8 @@
 Zone "VST3i: Pigments (Arturia)"
 	FocusedFXNavigator
 
+    DisplayUpper| 			    FocusedFXParamNameDisplay
+	DisplayLower|               FocusedFXParamValueDisplay
 	Rotary1	            FXParam 1 "Macro 1"
 	Rotary2	            FXParam 2 "Macro 2"
     Rotary3	            FXParam 3 "Macro 3"
