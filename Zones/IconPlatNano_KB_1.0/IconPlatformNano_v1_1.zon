@@ -21,10 +21,11 @@
 			"Transport"
 			"JogWheel"
 		IncludedZonesEnd
+
 	ZoneEnd
 
 	Zone "Channel"
-		OnFXFocus MapFocusedFXToWidgets
+		OnFXFocus 						MapFocusedFXToWidgets
 		SelectedTrackNavigator
 		Fader|							TrackVolume
 
@@ -59,7 +60,7 @@
 		Shift+Mute|						NoAction
 
 		Solo|							TrackSolo
-		Shift+Solo|						Reaper "_RS455298e0741a8468094a2d845d1b17bd9a5f36a1" // script solo exclusive
+		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // script solo exclusive
 
 		RecordArm| 						TrackRecordArm
 		Alt+RecordArm|					CycleTrackAutoMode
@@ -112,7 +113,9 @@
 		/ RED Buttons
 		/ Most common functions
 		Red1							Reaper "40042" // GO TO START
+		Shift+Red1						Reaper "40416" // Select and move to previous item
 		Red2							Reaper "40319" // Jump to next item
+		Shift+Red2						Reaper "40417" // Select and move to next item
 		Red3							Reaper "40406" // Toggle volume automation
 		Shift+Red3						Reaper "40292" // Automation envelope dialog
 		Red4							Reaper "41823" // Add to render with last settings
@@ -120,7 +123,7 @@
 		Red5							Reaper "40025" // Open project
 		Shift+Red5						Reaper "_S&M_NEWTAB_PRJTEMPLATEl" // Open project in new tab
 		Alt+Red5						Reaper "40021" // Open project settings
-		Red6							NoAction
+		Red6							Reaper "40293" // View I/O for selected track
 		Shift+Red6						NoAction
 		Red7							Reaper "41984"    / Arm envelope for last touched param
 		Red8							Reaper "40929" // Open render queue
@@ -138,9 +141,13 @@
 		Green6							Reaper "42398" // Paste
 		Green7							Reaper "40012" // Split items at cursor	
 		Green8							Reaper "40035" // Select all (ctrl+a)
-		Shift+Green7					Reaper "40360" // Set selected tracks to one random color
 		Green8							Reaper "1157"	/ Toggle snapping
-		Shift+Green8					Reaper "_SWS_COLCHILDREN" //Set selected track children to same color
+		Alt+Green5						Reaper "40360" // Set selected tracks to one random color
+		Alt+Green6						Reaper "_SWS_COLCHILDREN" // Set selected track children to same color
+		Alt+Green7						Reaper "_RS6712b797dd7bda890981f3b04a4fc1b83ecfd5bc"	// Selected track make color brighter
+		Alt+Green8						Reaper "_RS84c7762377db02770553d08af022f6288e59363d"  // Selected track make color darker
+			
+
 
 		/ BLUE BUTTONS
 		/ Midi Editing
@@ -158,7 +165,7 @@
 
 	Zone "JogWheel"
 
-		JogWheelPush					Shift 
+		JogWheelPush					Control
 		Alt+JogWheelPush				Reaper "40069" //jump to time window
 		/Shift+JogWheelPush				NoAction
 		/Control+JogWheelPush			NoAction
@@ -180,20 +187,36 @@
 		Alt+JogWheelCCW7 				Reaper "40138" 
 
 		/ Jog - move play head
-		Shift+JogWheelCW 				Reaper "40647" 
-		Shift+JogWheelCW2 				Reaper "40647" 
-		Shift+JogWheelCW3 				Reaper "40647" 
-		Shift+JogWheelCW4 				Reaper "40647" 
-		Shift+JogWheelCW5 				Reaper "40647" 
-		Shift+JogWheelCW6 				Reaper "40647" 
-		Shift+JogWheelCW7 				Reaper "40647" 
-		Shift+JogWheelCCW 				Reaper "40646" 
-		Shift+JogWheelCCW2 				Reaper "40646" 
-		Shift+JogWheelCCW3 				Reaper "40646" 
-		Shift+JogWheelCCW4 				Reaper "40646" 
-		Shift+JogWheelCCW5 				Reaper "40646" 
-		Shift+JogWheelCCW6 				Reaper "40646" 
-		Shift+JogWheelCCW7 				Reaper "40646" 
+		Control+JogWheelCW 				Reaper "40647" 
+		Control+JogWheelCW2 			Reaper "40647" 
+		Control+JogWheelCW3 			Reaper "40647" 
+		Control+JogWheelCW4 			Reaper "40647" 
+		Control+JogWheelCW5 			Reaper "40647" 
+		Control+JogWheelCW6 			Reaper "40647" 
+		Control+JogWheelCW7 			Reaper "40647" 
+		Control+JogWheelCCW 			Reaper "40646" 
+		Control+JogWheelCCW2 			Reaper "40646" 
+		Control+JogWheelCCW3 			Reaper "40646" 
+		Control+JogWheelCCW4 			Reaper "40646" 
+		Control+JogWheelCCW5 			Reaper "40646" 
+		Control+JogWheelCCW6 			Reaper "40646" 
+		Control+JogWheelCCW7 			Reaper "40646" 
+		
+		/ Time selection
+		Shift+JogWheelCW 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCW2 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCW3 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCW4 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCW5 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCW6 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCW7 				Reaper "40103" // Move cursor right, creating time selection
+		Shift+JogWheelCCW 				Reaper "40102" // Move cursor left, creating time selection
+		Shift+JogWheelCCW2 				Reaper "40102" // Move cursor left, creating time selection
+		Shift+JogWheelCCW3 				Reaper "40102" // Move cursor left, creating time selection
+		Shift+JogWheelCCW4 				Reaper "40102" // Move cursor left, creating time selection
+		Shift+JogWheelCCW5 				Reaper "40102" // Move cursor left, creating time selection
+		Shift+JogWheelCCW6 				Reaper "40102" // Move cursor left, creating time selection
+		Shift+JogWheelCCW7 				Reaper "40102" // Move cursor left, creating time selection
 
 		/ Scroll view - default jogwheel behavior
 		JogWheelCCW 					Reaper "_SWS_SCROLL_R1"
