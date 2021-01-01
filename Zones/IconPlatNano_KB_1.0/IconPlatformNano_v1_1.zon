@@ -5,7 +5,7 @@
 	/ by: krbash
 	/ ------------------------------------------------------------------------------
 	/ Update history
-	/ - v1.0- 2020-12-06 - Initial version, initially forked from Mistik 1.1
+	/ - v1.0- 2020-12-31 - Initial version, initially forked from Mistik 1.1
 	/ 
 	/ Action reference:	https:/github.com/GeoffAWaddington/reaper_csurf_integrator/wiki/Action-Reference
 	/ ------------------------------------------------------------------------------
@@ -60,7 +60,7 @@
 		Shift+Mute|						NoAction
 
 		Solo|							TrackSolo
-		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // script solo exclusive
+		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // customAction solo exclusive. Action comprises: Track: Unsolo All Tracks; Track: Solo Tracks
 
 		RecordArm| 						TrackRecordArm
 		Alt+RecordArm|					CycleTrackAutoMode
@@ -124,8 +124,8 @@
 		Shift+Red5						Reaper "_S&M_NEWTAB_PRJTEMPLATEl" // Open project in new tab
 		Alt+Red5						Reaper "40021" // Open project settings
 		Red6							Reaper "40293" // View I/O for selected track
-		Shift+Red6						NoAction
-		Red7							Reaper "41984"    / Arm envelope for last touched param
+		Shift+Red6						Reaper "_SWS_AWPANDUALPAN" // Set selected track to Dual Pan mode
+		Red7							Reaper "41984"  // Arm envelope for last touched param
 		Red8							Reaper "40929" // Open render queue
 		Shift+Red8						Reaper "41207" // Render all queued items
 
