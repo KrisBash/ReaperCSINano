@@ -98,9 +98,12 @@
 		RightCol1						Shift
 		RightCol2						Reaper "40026" // Save
 		Shift+RightCol2					Reaper "40022" // Save as
+		Alt+RightCol2					Reaper "41895" // Save with auto increment file name
 		RightCol3						Reaper "40029"  / Undo
 		Shift+RightCol3					Reaper "40072" // Undo history
 		RightCol4						Reaper "_S&M_SHOWFXCHAINSEL" //Show FX chain
+		Shift+RightCol4					Reaper "_S&M_TAKEFXCHAIN1" //Insert FXChain, Slot 1
+		Alt+RightCol4					Reaper "_S&M_TAKEFXCHAIN2" //Insert FXChain, Slot 2
 		RightCol5						Reaper "41589" // Open item properties
 		RightCol6						Alt
 
@@ -121,13 +124,13 @@
 		Red4							Reaper "41823" // Add to render with last settings
 		Shift+Red4						Reaper "40015" // Open render dialog
 		Red5							Reaper "40025" // Open project
-		Shift+Red5						Reaper "_S&M_NEWTAB_PRJTEMPLATEl" // Open project in new tab
+		Shift+Red5						Reaper "_1d26544fecb84443875a881afaa90167" // Open project in new tab
 		Alt+Red5						Reaper "40021" // Open project settings
 		Red6							Reaper "40293" // View I/O for selected track
 		Shift+Red6						Reaper "_SWS_AWPANDUALPAN" // Set selected track to Dual Pan mode
 		Red7							Reaper "41984"  // Arm envelope for last touched param
 		Red8							Reaper "40929" // Open render queue
-		Shift+Red8						Reaper "41207" // Render all queued items
+		Alt+Red8						Reaper "41207" // Render all queued items
 
 		/ GREEN BUTTONS
 		/ Track & item arrangement functions
@@ -219,20 +222,22 @@
 		Shift+JogWheelCCW7 				Reaper "40102" // Move cursor left, creating time selection
 
 		/ Scroll view - default jogwheel behavior
-		JogWheelCCW 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCCW2 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCCW3 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCCW4 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCCW5 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCCW6 					Reaper "_SWS_SCROLL_R10"
-		JogWheelCCW7 					Reaper "_SWS_SCROLL_R10"
-		JogWheelCW 						Reaper "_SWS_SCROLL_L1"
-		JogWheelCW2 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCW3 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCW4 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCW5 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCW6 					Reaper "_SWS_SCROLL_L10"
-		JogWheelCW7 					Reaper "_SWS_SCROLL_L10
+		JogWheelCCW 					Reaper "_SWS_SCROLL_L1" // "40140"
+		JogWheelCCW2 					Reaper "_SWS_SCROLL_L1"
+		JogWheelCCW3 					Reaper "_SWS_SCROLL_L1"
+		JogWheelCCW4 					Reaper "_SWS_SCROLL_L1"
+		JogWheelCCW5 					Reaper "_SWS_SCROLL_L1"
+		JogWheelCCW6 					Reaper "_SWS_SCROLL_L1"
+		JogWheelCCW7 					Reaper "_SWS_SCROLL_L10"
+		JogWheelCCW8 					Reaper "_SWS_SCROLL_L10"
+		JogWheelCW 						Reaper "_SWS_SCROLL_R1"
+		JogWheelCW2 					Reaper "_SWS_SCROLL_R1"
+		JogWheelCW3 					Reaper "_SWS_SCROLL_R1"  //"40141"
+		JogWheelCW4 					Reaper "_SWS_SCROLL_R1"
+		JogWheelCW5 					Reaper "_SWS_SCROLL_R1"
+		JogWheelCW6 					Reaper "_SWS_SCROLL_R1"
+		JogWheelCW7 					Reaper "_SWS_SCROLL_R10"
+		JogWheelCW8 					Reaper "_SWS_SCROLL_R10"
 
 		/ Zoom
 		Zoom+Up 						Reaper "40111"
