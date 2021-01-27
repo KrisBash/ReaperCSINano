@@ -1,0 +1,20 @@
+Zone "VST3: Chandler Limited Zener Limiter (Softube)"
+	FocusedFXNavigator
+    DisplayUpper| 	    FocusedFXParamNameDisplay
+	DisplayLower|       FocusedFXParamValueDisplay
+
+	Rotary1             FXParam 8 "L Input"
+    Alt+Rotary1	        FXParam 7 "L THD"
+	Rotary2             FXParam 10 "L Output"
+    Alt+Rotary2         FXParam 13 "Link Channels"
+	Rotary3             FXParam 11 "L Compressor Mode"
+    Alt+Rotary3	        FXParam 3 "Mid/Side Processing"
+	Rotary4             FXParam 12 "L Side Chain"
+    Alt+Rotary4         FXParam 4 "Ext/Int Sidechain"
+	Rotary5             FXParam 9 "L Attack"
+	Rotary6             FXParam 13 "L Release"
+	Rotary7             FXParam 6 "L Input Gain"
+    Rotary8             FXParam 5 "Ext S/C Gain"
+
+ZoneEnd
+

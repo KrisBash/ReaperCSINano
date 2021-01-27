@@ -1,0 +1,21 @@
+Zone "VST3: Chandler Limited Germanium Comp (Softube)"
+	FocusedFXNavigator
+    DisplayUpper| 	    FocusedFXParamNameDisplay
+	DisplayLower|       FocusedFXParamValueDisplay
+
+	Rotary1             FXParam 0 "L Input"
+    Alt+Rotary1	        FXParam 9 "L Clean/Dirty Comp"
+	Rotary2             FXParam 26 "Output"
+    Alt+Rotary2	        FXParam 13 "Link Channels"
+	Rotary3             FXParam 7 "L Germanium Drive"
+    Alt+Rotary3	        FXParam 27 "Bypass"
+	Rotary4             FXParam 8 "L Feedback"
+	Rotary5             FXParam 1 "L Sidechain Filter"
+	Rotary6             FXParam 2 "L Ratio"
+	Rotary7             FXParam 3 "L Comp Curve"
+    Rotary8             FXParam 4 "L Mix"
+
+
+ZoneEnd
+
+

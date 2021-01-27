@@ -1,11 +1,11 @@
 	/ ------------------------------------------------------------------------------
 	/ Zone/Action definitions for Icon Platform Nano
 	/ ------------------------------------------------------------------------------
-	/ Version: 1.0
+	/ Version: 1.1
 	/ by: krbash
 	/ ------------------------------------------------------------------------------
 	/ Update history
-	/ - v1.0- 2020-12-31 - Initial version, initially forked from Mistik 1.1
+	/ - v1.1 - 2020-01-31 - Initial version, initially forked from Mistik 1.1
 	/ 
 	/ Action reference:	https:/github.com/GeoffAWaddington/reaper_csurf_integrator/wiki/Action-Reference
 	/ ------------------------------------------------------------------------------
@@ -60,6 +60,7 @@
 		Shift+Mute|						NoAction
 
 		Solo|							TrackSolo
+		Alt+Solo|						ClearAllSolo
 		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // customAction solo exclusive. Action comprises: Track: Unsolo All Tracks; Track: Solo Tracks
 
 		RecordArm| 						TrackRecordArm
@@ -87,7 +88,9 @@
 		Stop 							Stop
 		Record 							Record
 		Rewind							Rewind
+		Shift+Rewind					Reaper "40084" // Rewind a little bit
 		FastForward						FastForward
+		Shift+FastForward				Reaper "40085" // Fast Forward a little bit
 		Loop							Reaper "1068" //Toggle repeat
 
 	ZoneEnd
@@ -102,16 +105,19 @@
 		RightCol3						Reaper "40029"  / Undo
 		Shift+RightCol3					Reaper "40072" // Undo history
 		RightCol4						Reaper "_S&M_SHOWFXCHAINSEL" //Show FX chain
-		Shift+RightCol4					Reaper "_S&M_TAKEFXCHAIN1" //Insert FXChain, Slot 1
-		Alt+RightCol4					Reaper "_S&M_TAKEFXCHAIN2" //Insert FXChain, Slot 2
+		Shift+RightCol4					Reaper "_RSc75bef1a8579499b9a88895113055c841d7a071c" // Insert Curve Bender
+		Alt+RightCol4					Reaper "_RSd3eb33282e5a6da737d3ad6a35d565b28daf0371" // Insert Zener Limiter
+		Shift+Alt+RightCol4				Reaper "_RS20efdaa0f732018118455b01e9a14798f174b934" // Insert Germanium compressor
 		RightCol5						Reaper "41589" // Open item properties
+		Shift+RightCol5					Reaper "40687" // Toggle item lock
 		RightCol6						Alt
 
 		/ LEFT COLUMN buttons	(6 buttons on the left)
 		/ These bank buttons are of limited use, but used here to scroll presets for plugins
 		BankLeft						Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
+		Alt+BankLeft					Reaper "40516" //Pitch item down one octave
 		BankRight 						Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
-
+		Alt+BankRight					Reaper "40515"
 
 		/ RED Buttons
 		/ Most common functions
@@ -129,6 +135,8 @@
 		Red6							Reaper "40293" // View I/O for selected track
 		Shift+Red6						Reaper "_SWS_AWPANDUALPAN" // Set selected track to Dual Pan mode
 		Red7							Reaper "41984"  // Arm envelope for last touched param
+		Shift+Red7						MapFocusedFXToWidgets
+		Alt+Red7						GoZone Home
 		Red8							Reaper "40929" // Open render queue
 		Alt+Red8						Reaper "41207" // Render all queued items
 

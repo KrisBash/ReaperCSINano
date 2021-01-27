@@ -1,0 +1,21 @@
+Zone "VST3: Chandler Limited Curve Bender (Softube)"
+
+	FocusedFXNavigator
+
+    DisplayUpper| 		FocusedFXParamNameDisplay
+	DisplayLower|       FocusedFXParamValueDisplay
+
+	Rotary1             FXParam 5 "L Bass Gain"
+    Alt+Rotary1         FXParam 6 "L Bass Multiplier"
+	Rotary2             FXParam 8 "L Presence 2 Gain"
+    Alt+Rotary2	        FXParam 9 "L Presence 2 Multiplier"
+	Rotary3             FXParam 11 "L Presence 1 Gain"
+    Alt+Rotary3         FXParam 12 "L Presence 1 Multiplier"
+	Rotary4             FXParam 15 "L Treble Gain"
+    Alt+Rotary4  	    FXParam 16 "L Treble Multiplier"
+	Rotary5             FXParam 4 "L Bass Frequency"
+	Rotary6             FXParam 7 "L Presence 2 Frequency"
+	Rotary7             FXParam 10 "L Presence 1 Frequency"
+    Rotary8             FXParam 14 "L Treble Frequency"
+
+ZoneEnd
