@@ -177,7 +177,7 @@
 	Zone "JogWheel"
 
 		JogWheelPush					Control
-		Alt+JogWheelPush				Reaper "40069" //jump to time window
+		Alt+JogWheelPush				Reaper "40434" //move edit cursor to play position
 		/Shift+JogWheelPush				NoAction
 		/Control+JogWheelPush			NoAction
 
