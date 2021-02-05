@@ -61,7 +61,7 @@
 
 		Solo|							TrackSolo
 		Alt+Solo|						ClearAllSolo
-		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // customAction solo exclusive. Action comprises: Track: Unsolo All Tracks; Track: Solo Tracks
+		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // Solo exclusive: customAction that combines: Track: Unsolo All Tracks; Track: Solo Tracks. TBD: Replace with .lua script.
 
 		RecordArm| 						TrackRecordArm
 		Alt+RecordArm|					CycleTrackAutoMode
@@ -107,9 +107,9 @@
 		RightCol3						Reaper "40029"  / Undo
 		Shift+RightCol3					Reaper "40072" // Undo history
 		RightCol4						Reaper "_S&M_SHOWFXCHAINSEL" //Show FX chain
-		Shift+RightCol4					Reaper "_RSc75bef1a8579499b9a88895113055c841d7a071c" // Insert Curve Bender
-		Alt+RightCol4					Reaper "_RSd3eb33282e5a6da737d3ad6a35d565b28daf0371" // Insert Zener Limiter
-		Shift+Alt+RightCol4				Reaper "_RS20efdaa0f732018118455b01e9a14798f174b934" // Insert Germanium compressor
+		Shift+RightCol4					Reaper "_RSc75bef1a8579499b9a88895113055c841d7a071c" // Insert Curve Bender, custom script
+		Alt+RightCol4					Reaper "_RSd3eb33282e5a6da737d3ad6a35d565b28daf0371" // Insert Zener Limiter, custom script
+		Shift+Alt+RightCol4				Reaper "_RS20efdaa0f732018118455b01e9a14798f174b934" // Insert Germanium compressor, custom script
 		RightCol5						Reaper "41589" // Open item properties
 		Shift+RightCol5					Reaper "40687" // Toggle item lock
 		RightCol6						Alt
@@ -148,23 +148,23 @@
 		Green1							Reaper "40702" // Create new track
 		Shift+Green1					Reaper "40214" // Create new midi item
 		Green2							Reaper "40062" // Duplicate track
-		Green3							Reaper "1041" // Cycle folder collapse state
+		Green3							Reaper "1041"  // Cycle folder collapse state
 		Green4							Reaper "40697" // Delete track or item
 		Green5							Reaper "40698" // Copy items or tracks
 		Shift+Green5					Reaper "40059" // Cut items or tracks
 		Green6							Reaper "42398" // Paste
 		Green7							Reaper "40012" // Split items at cursor	
 		Green8							Reaper "40035" // Select all (ctrl+a)
-		Green8							Reaper "1157"	/ Toggle snapping
+		Green8							Reaper "1157"  // Toggle snapping
 		Alt+Green5						Reaper "40360" // Set selected tracks to one random color
 		Alt+Green6						Reaper "_SWS_COLCHILDREN" // Set selected track children to same color
-		Alt+Green7						Reaper "_RS6712b797dd7bda890981f3b04a4fc1b83ecfd5bc"	// Selected track make color brighter
-		Alt+Green8						Reaper "_RS84c7762377db02770553d08af022f6288e59363d"  // Selected track make color darker
+		Alt+Green7						Reaper "_RS6712b797dd7bda890981f3b04a4fc1b83ecfd5bc"	// Selected track make color brighter, custom script
+		Alt+Green8						Reaper "_RS84c7762377db02770553d08af022f6288e59363d"  // Selected track make color darker, custom script
 			
 
 
 		/ BLUE BUTTONS
-		/ Midi Editing
+		/ Midi Editing, TBD
 		Blue1							Reaper "40009" //Quantize dialog
 		Blue2							Reaper "40457" //Humanize dialog
 		Blue5							NoAction
@@ -174,6 +174,7 @@
 		Blue8							Reaper "40697" //Delete notes
 
 		/PURPLE BUTTONS	
+		/ TBD
 
 	ZoneEnd
 
