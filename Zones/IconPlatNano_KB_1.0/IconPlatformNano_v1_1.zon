@@ -89,8 +89,10 @@
 		Record 							Record
 		Rewind							Rewind
 		Shift+Rewind					Reaper "40084" // Rewind a little bit
+		Alt+Rewind						Reaper "40102" // Move cursor left, creating time selection
 		FastForward						FastForward
 		Shift+FastForward				Reaper "40085" // Fast Forward a little bit
+		Alt+FastForward					Reaper "40103" // Move cursor right, creating time selection
 		Loop							Reaper "1068" //Toggle repeat
 
 	ZoneEnd
@@ -129,14 +131,15 @@
 		Shift+Red3						Reaper "40292" // Automation envelope dialog
 		Red4							Reaper "41823" // Add to render with last settings
 		Shift+Red4						Reaper "40015" // Open render dialog
+		Alt+Red4						Reaper "_a609ce585ced3a448b5461df6b73630f" // Save & Close current project
 		Red5							Reaper "40025" // Open project
 		Shift+Red5						Reaper "_1d26544fecb84443875a881afaa90167" // Open project in new tab
 		Alt+Red5						Reaper "40021" // Open project settings
 		Red6							Reaper "40293" // View I/O for selected track
-		Shift+Red6						Reaper "_SWS_AWPANDUALPAN" // Set selected track to Dual Pan mode
+		Shift+Red6						Reaper "_SWS_AWPANSTEREOPAN" // Set selected track to Stereo Pan
 		Red7							Reaper "41984"  // Arm envelope for last touched param
-		Shift+Red7						MapFocusedFXToWidgets
-		Alt+Red7						GoZone Home
+		Shift+Red7						Reaper "41223" // Freeze track (Stereo)
+		Alt+Red7						Reaper "41644" // Unfreeze track 
 		Red8							Reaper "40929" // Open render queue
 		Alt+Red8						Reaper "41207" // Render all queued items
 
