@@ -4,16 +4,12 @@
 / Single channel setup
 / Version: 1.1
 /
-/ by: Mistik (kreativist.si@gmail.com)
-/
+/ Forked from original version by: Mistik (kreativist.si@gmail.com)
 / Credits: WaveTrans (IconNano for beta version)
 /
 /	Tested and working on:
 / CSI version: 1.0 (2020-12-04)
-/	Icon Platform Nano firmware version: 1.14
-/
-/ Last update: 2020-12-06
-/
+/	Icon Platform Nano firmware version: 1.14, 1.20
 /-------------------------------------------------------------------------------
 
 / MASTER CHANNEL									----------------------------------------------
