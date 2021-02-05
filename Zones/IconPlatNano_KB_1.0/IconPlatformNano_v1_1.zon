@@ -1,260 +1,260 @@
-	/ ------------------------------------------------------------------------------
-	/ Zone/Action definitions for Icon Platform Nano
-	/ ------------------------------------------------------------------------------
-	/ Version: 1.1
-	/ by: krbash
-	/ ------------------------------------------------------------------------------
-	/ Update history
-	/ - v1.1 - 2020-01-31 - Initial version, initially forked from Mistik 1.1
-	/ 
-	/ Action reference:	https:/github.com/GeoffAWaddington/reaper_csurf_integrator/wiki/Action-Reference
-	/ ------------------------------------------------------------------------------
+    / ------------------------------------------------------------------------------
+    / Zone/Action definitions for Icon Platform Nano
+    / ------------------------------------------------------------------------------
+    / Version: 1.1
+    / by: krbash
+    / ------------------------------------------------------------------------------
+    / Update history
+    / - v1.1 - 2020-01-31 - Initial version, initially forked from Mistik 1.1
+    / 
+    / Action reference:	https:/github.com/GeoffAWaddington/reaper_csurf_integrator/wiki/Action-Reference
+    / ------------------------------------------------------------------------------
 
 
-	Zone "Home"
-		OnTrackSelection MapSelectedTrackSendsToWidgets
-		OnFXFocus MapFocusedFXToWidgets
-		IncludedZones
-			"Channel"
-			"MasterChannel"
-			"Buttons"
-			"Transport"
-			"JogWheel"
-		IncludedZonesEnd
+    Zone "Home"
+        OnTrackSelection MapSelectedTrackSendsToWidgets
+        OnFXFocus MapFocusedFXToWidgets
+        IncludedZones
+            "Channel"
+            "MasterChannel"
+            "Buttons"
+            "Transport"
+            "JogWheel"
+        IncludedZonesEnd
 
-	ZoneEnd
+    ZoneEnd
 
-	Zone "Channel"
-		OnFXFocus 						MapFocusedFXToWidgets
-		SelectedTrackNavigator
-		Fader|							TrackVolume
+    Zone "Channel"
+        OnFXFocus 						MapFocusedFXToWidgets
+        SelectedTrackNavigator
+        Fader|							TrackVolume
 
-		/ ROTARY Controls
-		Rotary1							MCUTrackPan
-		Rotary2							FocusedFXParam // Encode last touched FX param
-		Rotary3							FocusedFXParam
-		Rotary4							TrackVolume
-		Rotary5							NoAction
-		Rotary6							NoAction
-		Rotary7							NoAction
-		Rotary8							NoAction
+        / ROTARY Controls
+        Rotary1							MCUTrackPan
+        Rotary2							FocusedFXParam // Encode last touched FX param
+        Rotary3							FocusedFXParam
+        Rotary4							TrackVolume
+        Rotary5							NoAction
+        Rotary6							NoAction
+        Rotary7							NoAction
+        Rotary8							NoAction
 
-		RotaryPush1						Reaper "_XENAKIOS_PANTRACKSCENTER" // Pan track to center
-		RotaryPush2						NoAction
-		RotaryPush3						NoAction
-		RotaryPush4						NoAction
-		RotaryPush5						NoAction
-		RotaryPush6						NoAction
-		RotaryPush7						NoAction
-		RotaryPush8						NoAction
+        RotaryPush1						Reaper "_XENAKIOS_PANTRACKSCENTER" // Pan track to center
+        RotaryPush2						NoAction
+        RotaryPush3						NoAction
+        RotaryPush4						NoAction
+        RotaryPush5						NoAction
+        RotaryPush6						NoAction
+        RotaryPush7						NoAction
+        RotaryPush8						NoAction
 
-		/ DISPLAYS
-		VUMeter|						TrackOutputMeter // or TrackOutputMeterMaxPeakLR
-		TimeDisplay|					TimeDisplay
-		DisplayUpper| 					MCUTrackPanDisplay // Rotary
-		DisplayLower| 					TrackNameDisplay 
+        / DISPLAYS
+        VUMeter|						TrackOutputMeter // or TrackOutputMeterMaxPeakLR
+        TimeDisplay|					TimeDisplay
+        DisplayUpper|					MCUTrackPanDisplay // Rotary
+        DisplayLower|					TrackNameDisplay 
 
-		/ TRACK Controls
-		Mute|							TrackMute
-		Alt+Mute|						NoAction
-		Shift+Mute|						NoAction
+        / TRACK Controls
+        Mute|							TrackMute
+        Alt+Mute|						NoAction
+        Shift+Mute|						NoAction
 
-		Solo|							TrackSolo
-		Alt+Solo|						ClearAllSolo
-		Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // Solo exclusive: customAction that combines: Track: Unsolo All Tracks; Track: Solo Tracks. TBD: Replace with .lua script.
+        Solo|							TrackSolo
+        Alt+Solo|						ClearAllSolo
+        Shift+Solo|						Reaper "_5e4c9fa4c66b95439a502b9752c2a8dc" // Solo exclusive: customAction that combines: Track: Unsolo All Tracks; Track: Solo Tracks. TBD: Replace with .lua script.
 
-		RecordArm| 						TrackRecordArm
-		Alt+RecordArm|					CycleTrackAutoMode
-		Shift+RecordArm|				NoAction
-		Control+RecordArm|				NoAction
+        RecordArm| 						TrackRecordArm
+        Alt+RecordArm| 					CycleTrackAutoMode
+        Shift+RecordArm| 				NoAction
+        Control+RecordArm| 				NoAction
 
-	ZoneEnd
-
-
-	Zone "MasterChannel"
-		/ Master track (accessed by pressing the Master button on Icon Nano)
-		MasterTrackNavigator
-		MasterFader						TrackVolume
-		DisplayUpperMaster				TrackNameDisplay
-		DisplayLowerMaster				TrackVolumeDisplay
-		VUMeterMaster					TrackOutputMeter
-
-	ZoneEnd
-
-	Zone "Transport"
-		/ TRANSPORT buttons
-		Play 							Play
-		Alt+Play						Reaper "1007" // Play, from cursor position	
-		Stop 							Stop
-		Record 							Record
-		Rewind							Rewind
-		Shift+Rewind					Reaper "40084" // Rewind a little bit
-		Alt+Rewind						Reaper "40102" // Move cursor left, creating time selection
-		FastForward						FastForward
-		Shift+FastForward				Reaper "40085" // Fast Forward a little bit
-		Alt+FastForward					Reaper "40103" // Move cursor right, creating time selection
-		Loop							Reaper "1068" //Toggle repeat
-
-	ZoneEnd
-
-	Zone "Buttons"
-
-		/ RIGHT COLUMN buttons 
-		RightCol1						Shift
-		RightCol2						Reaper "40026" // Save
-		Shift+RightCol2					Reaper "40022" // Save as
-		Alt+RightCol2					Reaper "41895" // Save with auto increment file name
-		RightCol3						Reaper "40029"  / Undo
-		Shift+RightCol3					Reaper "40072" // Undo history
-		RightCol4						Reaper "_S&M_SHOWFXCHAINSEL" //Show FX chain
-		Shift+RightCol4					Reaper "_RSc75bef1a8579499b9a88895113055c841d7a071c" // Insert Curve Bender, custom script
-		Alt+RightCol4					Reaper "_RSd3eb33282e5a6da737d3ad6a35d565b28daf0371" // Insert Zener Limiter, custom script
-		Shift+Alt+RightCol4				Reaper "_RS20efdaa0f732018118455b01e9a14798f174b934" // Insert Germanium compressor, custom script
-		RightCol5						Reaper "41589" // Open item properties
-		Shift+RightCol5					Reaper "40687" // Toggle item lock
-		RightCol6						Alt
-
-		/ LEFT COLUMN buttons	(6 buttons on the left)
-		/ These bank buttons are of limited use, but used here to scroll presets for plugins
-		BankLeft						Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
-		Alt+BankLeft					Reaper "40516" //Pitch item down one octave
-		BankRight 						Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
-		Alt+BankRight					Reaper "40515"
-
-		/ RED Buttons
-		/ Most common functions
-		Red1							Reaper "40042" // GO TO START
-		Shift+Red1						Reaper "40416" // Select and move to previous item
-		Red2							Reaper "40319" // Jump to next item
-		Shift+Red2						Reaper "40417" // Select and move to next item
-		Red3							Reaper "40406" // Toggle volume automation
-		Shift+Red3						Reaper "40292" // Automation envelope dialog
-		Red4							Reaper "41823" // Add to render with last settings
-		Shift+Red4						Reaper "40015" // Open render dialog
-		Alt+Red4						Reaper "_a609ce585ced3a448b5461df6b73630f" // Save & Close current project
-		Red5							Reaper "40025" // Open project
-		Shift+Red5						Reaper "_1d26544fecb84443875a881afaa90167" // Open project in new tab
-		Alt+Red5						Reaper "40021" // Open project settings
-		Red6							Reaper "40293" // View I/O for selected track
-		Shift+Red6						Reaper "_SWS_AWPANSTEREOPAN" // Set selected track to Stereo Pan
-		Red7							Reaper "41984"  // Arm envelope for last touched param
-		Shift+Red7						Reaper "41223" // Freeze track (Stereo)
-		Alt+Red7						Reaper "41644" // Unfreeze track 
-		Red8							Reaper "40929" // Open render queue
-		Alt+Red8						Reaper "41207" // Render all queued items
-
-		/ GREEN BUTTONS
-		/ Track & item arrangement functions
-		Green1							Reaper "40702" // Create new track
-		Shift+Green1					Reaper "40214" // Create new midi item
-		Green2							Reaper "40062" // Duplicate track
-		Green3							Reaper "1041"  // Cycle folder collapse state
-		Green4							Reaper "40697" // Delete track or item
-		Green5							Reaper "40698" // Copy items or tracks
-		Shift+Green5					Reaper "40059" // Cut items or tracks
-		Green6							Reaper "42398" // Paste
-		Green7							Reaper "40012" // Split items at cursor	
-		Green8							Reaper "40035" // Select all (ctrl+a)
-		Green8							Reaper "1157"  // Toggle snapping
-		Alt+Green5						Reaper "40360" // Set selected tracks to one random color
-		Alt+Green6						Reaper "_SWS_COLCHILDREN" // Set selected track children to same color
-		Alt+Green7						Reaper "_RS6712b797dd7bda890981f3b04a4fc1b83ecfd5bc"	// Selected track make color brighter, custom script
-		Alt+Green8						Reaper "_RS84c7762377db02770553d08af022f6288e59363d"  // Selected track make color darker, custom script
-			
+    ZoneEnd
 
 
-		/ BLUE BUTTONS
-		/ Midi Editing, TBD
-		Blue1							Reaper "40009" //Quantize dialog
-		Blue2							Reaper "40457" //Humanize dialog
-		Blue5							NoAction
-		Shift+Blue5						NoAction
-		Blue6							Reaper  "40699" //Cut items
-		Blue7							Reaper "40058" //Paste items
-		Blue8							Reaper "40697" //Delete notes
+    Zone "MasterChannel"
+        / Master track (accessed by pressing the Master button on Icon Nano)
+        MasterTrackNavigator
+        MasterFader						TrackVolume
+        DisplayUpperMaster				TrackNameDisplay
+        DisplayLowerMaster				TrackVolumeDisplay
+        VUMeterMaster					TrackOutputMeter
 
-		/PURPLE BUTTONS	
-		/ TBD
+    ZoneEnd
 
-	ZoneEnd
+    Zone "Transport"
+        / TRANSPORT buttons
+        Play 							Play
+        Alt+Play						Reaper "1007" // Play, from cursor position	
+        Stop 							Stop
+        Record 							Record
+        Rewind							Rewind
+        Shift+Rewind					Reaper "40084" // Rewind a little bit
+        Alt+Rewind						Reaper "40102" // Move cursor left, creating time selection
+        FastForward						FastForward
+        Shift+FastForward				Reaper "40085" // Fast Forward a little bit
+        Alt+FastForward					Reaper "40103" // Move cursor right, creating time selection
+        Loop							Reaper "1068" //Toggle repeat
 
-	Zone "JogWheel"
+    ZoneEnd
 
-		JogWheelPush					Control
-		Alt+JogWheelPush				Reaper "40434" //move edit cursor to play position
-		/Shift+JogWheelPush				NoAction
-		/Control+JogWheelPush			NoAction
+    Zone "Buttons"
 
-		/ Vertical Scroll 
-		Alt+JogWheelCW 					Reaper "40139" 
-		Alt+JogWheelCW2 				Reaper "440139"
-		Alt+JogWheelCW3 				Reaper "40139" 
-		Alt+JogWheelCW4 				Reaper "40139" 
-		Alt+JogWheelCW5 				Reaper "40139"
-		Alt+JogWheelCW6 				Reaper "40139" 
-		Alt+JogWheelCW7 				Reaper "40139" 
-		Alt+JogWheelCCW 				Reaper "40138" 
-		Alt+JogWheelCCW2 				Reaper "40138" 
-		Alt+JogWheelCCW3 				Reaper "40138" 
-		Alt+JogWheelCCW4 				Reaper "40138" 
-		Alt+JogWheelCCW5 				Reaper "40138" 
-		Alt+JogWheelCCW6 				Reaper "40138" 
-		Alt+JogWheelCCW7 				Reaper "40138" 
+        / RIGHT COLUMN buttons 
+        RightCol1						Shift
+        RightCol2						Reaper "40026" // Save
+        Shift+RightCol2					Reaper "40022" // Save as
+        Alt+RightCol2					Reaper "41895" // Save with auto increment file name
+        RightCol3						Reaper "40029"  / Undo
+        Shift+RightCol3					Reaper "40072" // Undo history
+        RightCol4						Reaper "_S&M_SHOWFXCHAINSEL" //Show FX chain
+        Shift+RightCol4					Reaper "_RSc75bef1a8579499b9a88895113055c841d7a071c" // Insert Curve Bender, custom script
+        Alt+RightCol4					Reaper "_RSd3eb33282e5a6da737d3ad6a35d565b28daf0371" // Insert Zener Limiter, custom script
+        Shift+Alt+RightCol4				Reaper "_RS20efdaa0f732018118455b01e9a14798f174b934" // Insert Germanium compressor, custom script
+        RightCol5						Reaper "41589" // Open item properties
+        Shift+RightCol5					Reaper "40687" // Toggle item lock
+        RightCol6						Alt
 
-		/ Jog - move play head
-		Control+JogWheelCW 				Reaper "40647" 
-		Control+JogWheelCW2 			Reaper "40647" 
-		Control+JogWheelCW3 			Reaper "40647" 
-		Control+JogWheelCW4 			Reaper "40647" 
-		Control+JogWheelCW5 			Reaper "40647" 
-		Control+JogWheelCW6 			Reaper "40647" 
-		Control+JogWheelCW7 			Reaper "40647" 
-		Control+JogWheelCCW 			Reaper "40646" 
-		Control+JogWheelCCW2 			Reaper "40646" 
-		Control+JogWheelCCW3 			Reaper "40646" 
-		Control+JogWheelCCW4 			Reaper "40646" 
-		Control+JogWheelCCW5 			Reaper "40646" 
-		Control+JogWheelCCW6 			Reaper "40646" 
-		Control+JogWheelCCW7 			Reaper "40646" 
-		
-		/ Time selection
-		Shift+JogWheelCW 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCW2 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCW3 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCW4 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCW5 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCW6 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCW7 				Reaper "40103" // Move cursor right, creating time selection
-		Shift+JogWheelCCW 				Reaper "40102" // Move cursor left, creating time selection
-		Shift+JogWheelCCW2 				Reaper "40102" // Move cursor left, creating time selection
-		Shift+JogWheelCCW3 				Reaper "40102" // Move cursor left, creating time selection
-		Shift+JogWheelCCW4 				Reaper "40102" // Move cursor left, creating time selection
-		Shift+JogWheelCCW5 				Reaper "40102" // Move cursor left, creating time selection
-		Shift+JogWheelCCW6 				Reaper "40102" // Move cursor left, creating time selection
-		Shift+JogWheelCCW7 				Reaper "40102" // Move cursor left, creating time selection
+        / LEFT COLUMN buttons	(6 buttons on the left)
+        / These bank buttons are of limited use, but used here to scroll presets for plugins
+        BankLeft						Reaper "_S&M_PREV_FOCFX_PRESET" //Prior Preset
+        Alt+BankLeft					Reaper "40516" //Pitch item down one octave
+        BankRight 						Reaper "_S&M_NEXT_FOCFX_PRESET" //Next Preset
+        Alt+BankRight					Reaper "40515"
 
-		/ Scroll view - default jogwheel behavior
-		JogWheelCCW 					Reaper "_SWS_SCROLL_L1" // "40140"
-		JogWheelCCW2 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCCW3 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCCW4 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCCW5 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCCW6 					Reaper "_SWS_SCROLL_L1"
-		JogWheelCCW7 					Reaper "_SWS_SCROLL_L10"
-		JogWheelCCW8 					Reaper "_SWS_SCROLL_L10"
-		JogWheelCW 						Reaper "_SWS_SCROLL_R1"
-		JogWheelCW2 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCW3 					Reaper "_SWS_SCROLL_R1"  //"40141"
-		JogWheelCW4 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCW5 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCW6 					Reaper "_SWS_SCROLL_R1"
-		JogWheelCW7 					Reaper "_SWS_SCROLL_R10"
-		JogWheelCW8 					Reaper "_SWS_SCROLL_R10"
+        / RED Buttons
+        / Most common functions
+        Red1							Reaper "40042" // GO TO START
+        Shift+Red1						Reaper "40416" // Select and move to previous item
+        Red2							Reaper "40319" // Jump to next item
+        Shift+Red2						Reaper "40417" // Select and move to next item
+        Red3							Reaper "40406" // Toggle volume automation
+        Shift+Red3						Reaper "40292" // Automation envelope dialog
+        Red4							Reaper "41823" // Add to render with last settings
+        Shift+Red4						Reaper "40015" // Open render dialog
+        Alt+Red4						Reaper "_a609ce585ced3a448b5461df6b73630f" // Save & Close current project
+        Red5							Reaper "40025" // Open project
+        Shift+Red5						Reaper "_1d26544fecb84443875a881afaa90167" // Open project in new tab
+        Alt+Red5						Reaper "40021" // Open project settings
+        Red6							Reaper "40293" // View I/O for selected track
+        Shift+Red6						Reaper "_SWS_AWPANSTEREOPAN" // Set selected track to Stereo Pan
+        Red7							Reaper "41984"  // Arm envelope for last touched param
+        Shift+Red7						Reaper "41223" // Freeze track (Stereo)
+        Alt+Red7						Reaper "41644" // Unfreeze track 
+        Red8							Reaper "40929" // Open render queue
+        Alt+Red8						Reaper "41207" // Render all queued items
 
-		/ Zoom
-		Zoom+Up 						Reaper "40111"
-		Zoom+Down 						Reaper "40112"
-		Zoom+Right 						Reaper "1012"
-		Zoom+Left 						Reaper "1011"
+        / GREEN BUTTONS
+        / Track & item arrangement functions
+        Green1							Reaper "40702" // Create new track
+        Shift+Green1					Reaper "40214" // Create new midi item
+        Green2							Reaper "40062" // Duplicate track
+        Green3							Reaper "1041"  // Cycle folder collapse state
+        Green4							Reaper "40697" // Delete track or item
+        Green5							Reaper "40698" // Copy items or tracks
+        Shift+Green5					Reaper "40059" // Cut items or tracks
+        Green6							Reaper "42398" // Paste
+        Green7							Reaper "40012" // Split items at cursor	
+        Green8							Reaper "40035" // Select all (ctrl+a)
+        Green8							Reaper "1157"  // Toggle snapping
+        Alt+Green5						Reaper "40360" // Set selected tracks to one random color
+        Alt+Green6						Reaper "_SWS_COLCHILDREN" // Set selected track children to same color
+        Alt+Green7						Reaper "_RS6712b797dd7bda890981f3b04a4fc1b83ecfd5bc"	// Selected track make color brighter, custom script
+        Alt+Green8						Reaper "_RS84c7762377db02770553d08af022f6288e59363d"  // Selected track make color darker, custom script
+            
 
-	ZoneEnd
+
+        / BLUE BUTTONS
+        / Midi Editing, TBD
+        Blue1							Reaper "40009" //Quantize dialog
+        Blue2							Reaper "40457" //Humanize dialog
+        Blue5							NoAction
+        Shift+Blue5						NoAction
+        Blue6							Reaper  "40699" //Cut items
+        Blue7							Reaper "40058" //Paste items
+        Blue8							Reaper "40697" //Delete notes
+
+        /PURPLE BUTTONS	
+        / TBD
+
+    ZoneEnd
+
+    Zone "JogWheel"
+
+        JogWheelPush					Control
+        Alt+JogWheelPush				Reaper "40434" //move edit cursor to play position
+        /Shift+JogWheelPush				NoAction
+        /Control+JogWheelPush			NoAction
+
+        / Vertical Scroll 
+        Alt+JogWheelCW 					Reaper "40139" 
+        Alt+JogWheelCW2 				Reaper "440139"
+        Alt+JogWheelCW3 				Reaper "40139" 
+        Alt+JogWheelCW4 				Reaper "40139" 
+        Alt+JogWheelCW5 				Reaper "40139"
+        Alt+JogWheelCW6 				Reaper "40139" 
+        Alt+JogWheelCW7 				Reaper "40139" 
+        Alt+JogWheelCCW 				Reaper "40138" 
+        Alt+JogWheelCCW2 				Reaper "40138" 
+        Alt+JogWheelCCW3 				Reaper "40138" 
+        Alt+JogWheelCCW4 				Reaper "40138" 
+        Alt+JogWheelCCW5 				Reaper "40138" 
+        Alt+JogWheelCCW6 				Reaper "40138" 
+        Alt+JogWheelCCW7 				Reaper "40138" 
+
+        / Jog - move play head
+        Control+JogWheelCW 				Reaper "40647" 
+        Control+JogWheelCW2 			Reaper "40647" 
+        Control+JogWheelCW3 			Reaper "40647" 
+        Control+JogWheelCW4 			Reaper "40647" 
+        Control+JogWheelCW5 			Reaper "40647" 
+        Control+JogWheelCW6 			Reaper "40647" 
+        Control+JogWheelCW7 			Reaper "40647" 
+        Control+JogWheelCCW 			Reaper "40646" 
+        Control+JogWheelCCW2 			Reaper "40646" 
+        Control+JogWheelCCW3 			Reaper "40646" 
+        Control+JogWheelCCW4 			Reaper "40646" 
+        Control+JogWheelCCW5 			Reaper "40646" 
+        Control+JogWheelCCW6 			Reaper "40646" 
+        Control+JogWheelCCW7 			Reaper "40646" 
+        
+        / Time selection
+        Shift+JogWheelCW 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCW2 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCW3 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCW4 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCW5 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCW6 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCW7 				Reaper "40103" // Move cursor right, creating time selection
+        Shift+JogWheelCCW 				Reaper "40102" // Move cursor left, creating time selection
+        Shift+JogWheelCCW2 				Reaper "40102" // Move cursor left, creating time selection
+        Shift+JogWheelCCW3 				Reaper "40102" // Move cursor left, creating time selection
+        Shift+JogWheelCCW4 				Reaper "40102" // Move cursor left, creating time selection
+        Shift+JogWheelCCW5 				Reaper "40102" // Move cursor left, creating time selection
+        Shift+JogWheelCCW6 				Reaper "40102" // Move cursor left, creating time selection
+        Shift+JogWheelCCW7 				Reaper "40102" // Move cursor left, creating time selection
+
+        / Scroll view - default jogwheel behavior
+        JogWheelCCW 					Reaper "_SWS_SCROLL_L1" // "40140"
+        JogWheelCCW2 					Reaper "_SWS_SCROLL_L1"
+        JogWheelCCW3 					Reaper "_SWS_SCROLL_L1"
+        JogWheelCCW4 					Reaper "_SWS_SCROLL_L1"
+        JogWheelCCW5 					Reaper "_SWS_SCROLL_L1"
+        JogWheelCCW6 					Reaper "_SWS_SCROLL_L1"
+        JogWheelCCW7 					Reaper "_SWS_SCROLL_L10"
+        JogWheelCCW8 					Reaper "_SWS_SCROLL_L10"
+        JogWheelCW 						Reaper "_SWS_SCROLL_R1"
+        JogWheelCW2 					Reaper "_SWS_SCROLL_R1"
+        JogWheelCW3 					Reaper "_SWS_SCROLL_R1"  //"40141"
+        JogWheelCW4 					Reaper "_SWS_SCROLL_R1"
+        JogWheelCW5 					Reaper "_SWS_SCROLL_R1"
+        JogWheelCW6 					Reaper "_SWS_SCROLL_R1"
+        JogWheelCW7 					Reaper "_SWS_SCROLL_R10"
+        JogWheelCW8 					Reaper "_SWS_SCROLL_R10"
+
+        / Zoom
+        Zoom+Up 						Reaper "40111"
+        Zoom+Down 						Reaper "40112"
+        Zoom+Right 						Reaper "1012"
+        Zoom+Left 						Reaper "1011"
+
+    ZoneEnd
